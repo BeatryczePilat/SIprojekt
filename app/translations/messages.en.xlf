@@ -1,0 +1,556 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="app.title">
+        <source>app.title</source>
+        <target>URL Shortener</target>
+      </trans-unit>
+      <trans-unit id="navbar.brand">
+        <source>navbar.brand</source>
+        <target>URL Shortener</target>
+      </trans-unit>
+      <trans-unit id="navbar.latest">
+        <source>navbar.latest</source>
+        <target>Latest</target>
+      </trans-unit>
+      <trans-unit id="navbar.popular">
+        <source>navbar.popular</source>
+        <target>Popular</target>
+      </trans-unit>
+      <trans-unit id="navbar.shorten">
+        <source>navbar.shorten</source>
+        <target>Shorten</target>
+      </trans-unit>
+      <trans-unit id="navbar.search">
+        <source>navbar.search</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="navbar.stats">
+        <source>navbar.stats</source>
+        <target>Statistics</target>
+      </trans-unit>
+      <trans-unit id="navbar.admin">
+        <source>navbar.admin</source>
+        <target>Admin</target>
+      </trans-unit>
+      <trans-unit id="navbar.admin_panel">
+        <source>navbar.admin_panel</source>
+        <target>Admin Panel</target>
+      </trans-unit>
+      <trans-unit id="navbar.manage_urls">
+        <source>navbar.manage_urls</source>
+        <target>Manage URLs</target>
+      </trans-unit>
+      <trans-unit id="navbar.manage_tags">
+        <source>navbar.manage_tags</source>
+        <target>Manage tags</target>
+      </trans-unit>
+      <trans-unit id="navbar.login">
+        <source>navbar.login</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="navbar.logout">
+        <source>navbar.logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="admin.dashboard.title">
+        <source>admin.dashboard.title</source>
+        <target>Welcome to the Admin Panel</target>
+      </trans-unit>
+      <trans-unit id="admin.dashboard.subtitle">
+        <source>admin.dashboard.subtitle</source>
+        <target>Here you can manage tags, URLs, and admin account.</target>
+      </trans-unit>
+      <trans-unit id="admin.dashboard.manage_urls">
+        <source>admin.dashboard.manage_urls</source>
+        <target>Manage URLs</target>
+      </trans-unit>
+      <trans-unit id="admin.dashboard.manage_tags">
+        <source>admin.dashboard.manage_tags</source>
+        <target>Manage Tags</target>
+      </trans-unit>
+      <trans-unit id="admin.dashboard.update_credentials">
+        <source>admin.dashboard.update_credentials</source>
+        <target>Update Login Credentials</target>
+      </trans-unit>
+      <trans-unit id="stats.title">
+        <source>stats.title</source>
+        <target>General Statistics</target>
+      </trans-unit>
+      <trans-unit id="stats.total_urls">
+        <source>stats.total_urls</source>
+        <target>Total shortened URLs:</target>
+      </trans-unit>
+      <trans-unit id="stats.recent_urls">
+        <source>stats.recent_urls</source>
+        <target>Recently added links:</target>
+      </trans-unit>
+      <trans-unit id="stats.total_clicks">
+        <source>stats.total_clicks</source>
+        <target>Total clicks:</target>
+      </trans-unit>
+      <trans-unit id="stats.most_clicked">
+        <source>stats.most_clicked</source>
+        <target>Most clicked links:</target>
+      </trans-unit>
+      <trans-unit id="stats.clicks">
+        <source>stats.clicks</source>
+        <target>Clicks</target>
+      </trans-unit>
+      <trans-unit id="stats.short_code">
+        <source>stats.short_code</source>
+        <target>Short code</target>
+      </trans-unit>
+      <trans-unit id="stats.unique_emails">
+        <source>stats.unique_emails</source>
+        <target>Unique emails:</target>
+      </trans-unit>
+      <trans-unit id="stats.total_tags">
+        <source>stats.total_tags</source>
+        <target>Total tags:</target>
+      </trans-unit>
+      <trans-unit id="stats.no_data">
+        <source>stats.no_data</source>
+        <target>No data.</target>
+      </trans-unit>
+      <trans-unit id="stats.no_emails">
+        <source>stats.no_emails</source>
+        <target>No emails.</target>
+      </trans-unit>
+      <trans-unit id="stats.no_tags">
+        <source>stats.no_tags</source>
+        <target>No tags.</target>
+      </trans-unit>
+      <trans-unit id="shorten.title">
+        <source>shorten.title</source>
+        <target>Shorten a URL</target>
+      </trans-unit>
+      <trans-unit id="shorten.success">
+        <source>shorten.success</source>
+        <target>Your shortened URL:</target>
+      </trans-unit>
+      <trans-unit id="shorten.label.original_url">
+        <source>shorten.label.original_url</source>
+        <target>Original URL</target>
+      </trans-unit>
+      <trans-unit id="shorten.label.email">
+        <source>shorten.label.email</source>
+        <target>Email address</target>
+      </trans-unit>
+      <trans-unit id="shorten.label.tags">
+        <source>shorten.label.tags</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="shorten.button">
+        <source>shorten.button</source>
+        <target>Shorten</target>
+      </trans-unit>
+      <trans-unit id="search.title">
+        <source>search.title</source>
+        <target>Search links</target>
+      </trans-unit>
+      <trans-unit id="search.label.email">
+        <source>search.label.email</source>
+        <target>Email address</target>
+      </trans-unit>
+      <trans-unit id="search.label.originalUrl">
+        <source>search.label.originalUrl</source>
+        <target>Original URL</target>
+      </trans-unit>
+      <trans-unit id="search.label.shortCode">
+        <source>search.label.shortCode</source>
+        <target>Short code</target>
+      </trans-unit>
+      <trans-unit id="search.label.tag">
+        <source>search.label.tag</source>
+        <target>Tag</target>
+      </trans-unit>
+      <trans-unit id="search.button">
+        <source>search.button</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="search.table.id">
+        <source>search.table.id</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="search.table.url">
+        <source>search.table.url</source>
+        <target>URL</target>
+      </trans-unit>
+      <trans-unit id="search.table.short">
+        <source>search.table.short</source>
+        <target>Short</target>
+      </trans-unit>
+      <trans-unit id="search.table.email">
+        <source>search.table.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="search.table.tags">
+        <source>search.table.tags</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="search.table.clicks">
+        <source>search.table.clicks</source>
+        <target>Clicks</target>
+      </trans-unit>
+      <trans-unit id="search.no_results">
+        <source>search.no_results</source>
+        <target>No results found.</target>
+      </trans-unit>
+      <trans-unit id="popular.title">
+        <source>popular.title</source>
+        <target>Most clicked links</target>
+      </trans-unit>
+      <trans-unit id="popular.header.short">
+        <source>popular.header.short</source>
+        <target>Short</target>
+      </trans-unit>
+      <trans-unit id="popular.header.url">
+        <source>popular.header.url</source>
+        <target>Original URL</target>
+      </trans-unit>
+      <trans-unit id="popular.header.clicks">
+        <source>popular.header.clicks</source>
+        <target>Clicks</target>
+      </trans-unit>
+      <trans-unit id="popular.header.date">
+        <source>popular.header.date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="popular.no_results">
+        <source>popular.no_results</source>
+        <target>No results.</target>
+      </trans-unit>
+      <trans-unit id="latest.title">
+        <source>latest.title</source>
+        <target>Recently added links</target>
+      </trans-unit>
+      <trans-unit id="latest.original_url">
+        <source>latest.original_url</source>
+        <target>Original URL</target>
+      </trans-unit>
+      <trans-unit id="latest.short_code">
+        <source>latest.short_code</source>
+        <target>Short code</target>
+      </trans-unit>
+      <trans-unit id="latest.created_at">
+        <source>latest.created_at</source>
+        <target>Date added</target>
+      </trans-unit>
+      <trans-unit id="latest.clicks">
+        <source>latest.clicks</source>
+        <target>Clicks</target>
+      </trans-unit>
+      <trans-unit id="latest.no_data">
+        <source>latest.no_data</source>
+        <target>No data</target>
+      </trans-unit>
+      <trans-unit id="tagged_links.title">
+        <source>tagged_links.title</source>
+        <target>Links with tag: %tag%</target>
+      </trans-unit>
+      <trans-unit id="tagged_links.original_url">
+        <source>tagged_links.original_url</source>
+        <target>Original URL</target>
+      </trans-unit>
+      <trans-unit id="tagged_links.short_code">
+        <source>tagged_links.short_code</source>
+        <target>Short code</target>
+      </trans-unit>
+      <trans-unit id="tagged_links.created_at">
+        <source>tagged_links.created_at</source>
+        <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="tagged_links.clicks">
+        <source>tagged_links.clicks</source>
+        <target>Clicks</target>
+      </trans-unit>
+      <trans-unit id="tagged_links.no_results">
+        <source>tagged_links.no_results</source>
+        <target>No results</target>
+      </trans-unit>
+      <trans-unit id="edit_url.title">
+        <source>edit_url.title</source>
+        <target>Edit URL</target>
+      </trans-unit>
+      <trans-unit id="edit_url.original_url">
+        <source>edit_url.original_url</source>
+        <target>Original URL</target>
+      </trans-unit>
+      <trans-unit id="edit_url.email">
+        <source>edit_url.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="edit_url.tags">
+        <source>edit_url.tags</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="edit_url.save_button">
+        <source>edit_url.save_button</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.title">
+        <source>admin.url_list.title</source>
+        <target>All Shortened URLs</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.id">
+        <source>admin.url_list.id</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.original_url">
+        <source>admin.url_list.original_url</source>
+        <target>Original URL</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.short_code">
+        <source>admin.url_list.short_code</source>
+        <target>Short Code</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.email">
+        <source>admin.url_list.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.tags">
+        <source>admin.url_list.tags</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.clicks">
+        <source>admin.url_list.clicks</source>
+        <target>Clicks</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.created_at">
+        <source>admin.url_list.created_at</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.actions">
+        <source>admin.url_list.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.edit">
+        <source>admin.url_list.edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.delete">
+        <source>admin.url_list.delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="admin.url_list.confirm_delete">
+        <source>admin.url_list.confirm_delete</source>
+        <target>Are you sure you want to delete?</target>
+      </trans-unit>
+      <trans-unit id="form.save">
+        <source>form.save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="tag.list.title">
+        <source>tag.list.title</source>
+        <target>List of tags</target>
+      </trans-unit>
+      <trans-unit id="tag.list.add">
+        <source>tag.list.add</source>
+        <target>Add tag</target>
+      </trans-unit>
+      <trans-unit id="tag.id">
+        <source>tag.id</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="tag.name">
+        <source>tag.name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="tag.slug">
+        <source>tag.slug</source>
+        <target>Slug</target>
+      </trans-unit>
+      <trans-unit id="tag.actions">
+        <source>tag.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="tag.edit">
+        <source>tag.edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="tag.delete">
+        <source>tag.delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="tag.delete.confirm">
+        <source>tag.delete.confirm</source>
+        <target>Are you sure you want to delete?</target>
+      </trans-unit>
+      <trans-unit id="admin.login_data.title">
+        <source>admin.login_data.title</source>
+        <target>Change login data</target>
+      </trans-unit>
+      <trans-unit id="admin.login_data.current_password">
+        <source>admin.login_data.current_password</source>
+        <target>Current password</target>
+      </trans-unit>
+      <trans-unit id="admin.login_data.new_password">
+        <source>admin.login_data.new_password</source>
+        <target>New password</target>
+      </trans-unit>
+      <trans-unit id="admin.login_data.email">
+        <source>admin.login_data.email</source>
+        <target>Email address</target>
+      </trans-unit>
+      <trans-unit id="admin.login_data.submit">
+        <source>admin.login_data.submit</source>
+        <target>Save changes</target>
+      </trans-unit>
+      <trans-unit id="login.title">
+        <source>login.title</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="login.heading">
+        <source>login.heading</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="login.email">
+        <source>login.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="login.password">
+        <source>login.password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="login.submit">
+        <source>login.submit</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="login.already_logged_in_prefix">
+        <source>login.already_logged_in_prefix</source>
+        <target>You are already logged in as %email%,</target>
+      </trans-unit>
+      <trans-unit id="login.already_logged_in">
+          <source>login.already_logged_in</source>
+          <target>You are already logged in.</target>
+      </trans-unit>
+
+      <trans-unit id="login.logout">
+        <source>login.logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="url.created_successfully">
+        <source>url.created_successfully</source>
+        <target>URL created successfully</target>
+      </trans-unit>
+      <trans-unit id="form.user.edit.title">
+        <source>form.user.edit.title</source>
+        <target>Edit User</target>
+      </trans-unit>
+      <trans-unit id="action.back_to_list">
+        <source>action.back_to_list</source>
+        <target>Back to list</target>
+      </trans-unit>
+      <trans-unit id="message.form_error">
+        <source>message.form_error</source>
+        <target>There are errors in the form.</target>
+      </trans-unit>
+      <trans-unit id="message.url_created">
+        <source>message.url_created</source>
+        <target>Short URL created successfully.</target>
+      </trans-unit>
+      <trans-unit id="form.url.original_url.label">
+        <source>form.url.original_url.label</source>
+        <target>Original URL</target>
+      </trans-unit>
+      <trans-unit id="form.url.email.label">
+        <source>form.url.email.label</source>
+        <target>Email (optional)</target>
+      </trans-unit>
+      <trans-unit id="form.url.tags.label">
+        <source>form.url.tags.label</source>
+        <target>Tags (optional)</target>
+      </trans-unit>
+      <trans-unit id="form.url_filter.email.label">
+        <source>form.url_filter.email.label</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="form.url_filter.original_url.label">
+        <source>form.url_filter.original_url.label</source>
+        <target>Original URL</target>
+      </trans-unit>
+      <trans-unit id="form.url_filter.short_code.label">
+        <source>form.url_filter.short_code.label</source>
+        <target>Short code</target>
+      </trans-unit>
+      <trans-unit id="form.url_filter.tag.label">
+        <source>form.url_filter.tag.label</source>
+        <target>Tag</target>
+      </trans-unit>
+      <trans-unit id="form.url_filter.tag.placeholder">
+        <source>form.url_filter.tag.placeholder</source>
+        <target>-- any --</target>
+      </trans-unit>
+      <trans-unit id="form.tag.name.label">
+        <source>form.tag.name.label</source>
+        <target>Tag name</target>
+      </trans-unit>
+      <trans-unit id="form.admin.email.label">
+        <source>form.admin.email.label</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="form.admin.current_password.label">
+        <source>form.admin.current_password.label</source>
+        <target>Current password</target>
+      </trans-unit>
+      <trans-unit id="form.admin.new_password.label">
+        <source>form.admin.new_password.label</source>
+        <target>New password</target>
+      </trans-unit>
+      <trans-unit id="error.short_code_not_found">
+        <source>error.short_code_not_found</source>
+        <target>Short code doesn't exist.</target>
+      </trans-unit>
+      <trans-unit id="url.shortened.success">
+        <source>url.shortened.success</source>
+        <target>Shortened URL saved.</target>
+      </trans-unit>
+      <trans-unit id="flash.url.updated">
+        <source>flash.url.updated</source>
+        <target>URL updated.</target>
+      </trans-unit>
+      <trans-unit id="flash.url.deleted">
+        <source>flash.url.deleted</source>
+        <target>URL deleted.</target>
+      </trans-unit>
+      <trans-unit id="form.url.edit_title">
+        <source>form.url.edit_title</source>
+        <target>Edit URL</target>
+      </trans-unit>
+      <trans-unit id="flash.tag.created">
+        <source>flash.tag.created</source>
+        <target>Tag created successfully.</target>
+      </trans-unit>
+      <trans-unit id="flash.tag.updated">
+        <source>flash.tag.updated</source>
+        <target>Tag updated.</target>
+      </trans-unit>
+      <trans-unit id="flash.tag.deleted">
+        <source>flash.tag.deleted</source>
+        <target>Tag deleted.</target>
+      </trans-unit>
+      <trans-unit id="form.tag.new_title">
+        <source>form.tag.new_title</source>
+        <target>New tag</target>
+      </trans-unit>
+      <trans-unit id="form.tag.edit_title">
+        <source>form.tag.edit_title</source>
+        <target>Edit tag</target>
+      </trans-unit>
+      <trans-unit id="flash.password.invalid">
+        <source>flash.password.invalid</source>
+        <target>Password is invalid.</target>
+      </trans-unit>
+      <trans-unit id="flash.credentials.updated">
+        <source>flash.credentials.updated</source>
+        <target>Credentials updated.</target>
+      </trans-unit>
+      <trans-unit id="flash.admin.profile_updated">
+        <source>flash.admin.profile_updated</source>
+        <target>Admin credentials updated.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'tagged_links.title'|trans({'%tag%': '<code>' ~ tag ~ '</code>'})|raw }}</h1>
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>{{ 'tagged_links.original_url'|trans }}</th>
+            <th>{{ 'tagged_links.short_code'|trans }}</th>
+            <th>{{ 'tagged_links.created_at'|trans }}</th>
+            <th>{{ 'tagged_links.clicks'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for url in urls %}
+            <tr>
+                <td>{{ url.originalUrl }}</td>
+                <td>{{ url.shortCode }}</td>
+                <td>{{ url.createdAt|date('Y-m-d H:i') }}</td>
+                <td>{{ url.clicks }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">{{ 'tagged_links.no_results'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

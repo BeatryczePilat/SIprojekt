@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'popular.title'|trans }}</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>{{ 'popular.header.short'|trans }}</th>
+            <th>{{ 'popular.header.url'|trans }}</th>
+            <th>{{ 'popular.header.clicks'|trans }}</th>
+            <th>{{ 'popular.header.date'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for url in urls %}
+            <tr>
+                <td>{{ url.shortCode }}</td>
+                <td>{{ url.originalUrl|length > 60 ? url.originalUrl|slice(0, 60) ~ '…' : url.originalUrl }}</td>
+                <td>{{ url.clicks }}</td>
+                <td>{{ url.createdAt|date('Y-m-d H:i') }}</td>
+            </tr>
+        {% else %}
+            <tr><td colspan="4">{{ 'popular.no_results'|trans }}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if pages > 1 %}
+        <nav>
+            <ul class="pagination">
+                {% for i in 1..pages %}
+                    <li class="page-item {% if i == currentPage %}active{% endif %}">
+                        <a class="page-link" href="{{ path('url_popular', {'page': i}) }}">{{ i }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    {% endif %}
+{% endblock %}

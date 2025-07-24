@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="mb-4">{{ 'tag.list.title'|trans }}</h1>
+
+    <a href="{{ path('admin_tag_new') }}" class="btn btn-primary mb-3">
+        {{ 'tag.list.add'|trans }}
+    </a>
+
+    <table class="table table-striped align-middle">
+        <thead>
+        <tr>
+            <th>{{ 'tag.id'|trans }}</th>
+            <th>{{ 'tag.name'|trans }}</th>
+            <th>{{ 'tag.slug'|trans }}</th>
+            <th>{{ 'tag.actions'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tag in tags %}
+            <tr>
+                <td>{{ tag.id }}</td>
+                <td>{{ tag.name }}</td>
+                <td>{{ tag.slug }}</td>
+                <td>
+                    <div class="d-flex gap-2">
+                        <a href="{{ path('admin_tag_edit', {'id': tag.id}) }}"
+                           class="btn btn-sm"
+                           style="background-color: #6a4c93; color: white;">
+                            {{ 'tag.edit'|trans }}
+                        </a>
+                        <form method="post"
+                              action="{{ path('admin_tag_delete', {id: tag.id}) }}"
+                              onsubmit="return confirm('{{ 'tag.delete.confirm'|trans }}');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete-tag-' ~ tag.id) }}">
+                            <button class="btn btn-sm"
+                                    style="background-color: #2d6a4f; color: white;">
+                                {{ 'tag.delete'|trans }}
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

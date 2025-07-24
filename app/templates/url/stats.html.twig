@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'stats.title'|trans }}</h1>
+
+    <div class="accordion" id="statsAccordion">
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingUrls">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUrls" aria-expanded="true" aria-controls="collapseUrls">
+                    {{ 'stats.total_urls'|trans }} <strong class="ms-2">{{ stats.totalUrls }}</strong>
+                </button>
+            </h2>
+            <div id="collapseUrls" class="accordion-collapse collapse show" aria-labelledby="headingUrls" data-bs-parent="#statsAccordion">
+                <div class="accordion-body">
+                    <p><strong>{{ 'stats.recent_urls'|trans }}</strong></p>
+                    {% if recentUrls is not empty %}
+                        <ul>
+                            {% for url in recentUrls %}
+                                <li>
+                                    <a href="{{ path('url_redirect', { shortCode: url.shortCode }) }}" target="_blank">
+                                        {{ url.originalUrl|length > 50 ? url.originalUrl|slice(0, 50) ~ '...' : url.originalUrl }}
+                                    </a>
+                                    <br>
+                                    <small>{{ 'stats.short_code'|trans }}: <code>{{ url.shortCode }}</code> | {{ 'stats.clicks'|trans }}: {{ url.clicks }}</small>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>{{ 'stats.no_data'|trans }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingClicks">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseClicks" aria-expanded="false" aria-controls="collapseClicks">
+                    {{ 'stats.total_clicks'|trans }} <strong class="ms-2">{{ stats.totalClicks }}</strong>
+                </button>
+            </h2>
+            <div id="collapseClicks" class="accordion-collapse collapse" aria-labelledby="headingClicks" data-bs-parent="#statsAccordion">
+                <div class="accordion-body">
+                    <p><strong>{{ 'stats.most_clicked'|trans }}</strong></p>
+                    {% if topClickedUrls is not empty %}
+                        <ul>
+                            {% for url in topClickedUrls %}
+                                <li>
+                                    <a href="{{ path('url_redirect', { shortCode: url.shortCode }) }}" target="_blank">
+                                        {{ url.originalUrl|length > 50 ? url.originalUrl|slice(0, 50) ~ '...' : url.originalUrl }}
+                                    </a>
+                                    <br>
+                                    <small>{{ 'stats.clicks'|trans }}: {{ url.clicks }}</small>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>{{ 'stats.no_data'|trans }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEmails">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmails" aria-expanded="false" aria-controls="collapseEmails">
+                    {{ 'stats.unique_emails'|trans }} <strong class="ms-2">{{ stats.uniqueEmails }}</strong>
+                </button>
+            </h2>
+            <div id="collapseEmails" class="accordion-collapse collapse" aria-labelledby="headingEmails" data-bs-parent="#statsAccordion">
+                <div class="accordion-body">
+                    {% if uniqueEmails is not empty %}
+                        <ul>
+                            {% for email in uniqueEmails %}
+                                <li>{{ email }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>{{ 'stats.no_emails'|trans }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTags">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTags" aria-expanded="false" aria-controls="collapseTags">
+                    {{ 'stats.total_tags'|trans }} <strong class="ms-2">{{ stats.totalTags }}</strong>
+                </button>
+            </h2>
+            <div id="collapseTags" class="accordion-collapse collapse" aria-labelledby="headingTags" data-bs-parent="#statsAccordion">
+                <div class="accordion-body">
+                    {% if tags is not empty %}
+                        <ul class="list-group">
+                            {% for tag in tags %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ tag.name }}
+                                    <span class="badge bg-secondary rounded-pill">{{ tag.count ?? 0 }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>{{ 'stats.no_tags'|trans }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

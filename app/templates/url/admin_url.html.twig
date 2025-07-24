@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="mb-4">{{ 'admin.url_list.title'|trans }}</h1>
+
+    <table class="table table-striped align-middle">
+        <thead class="table-dark">
+        <tr>
+            <th>{{ 'admin.url_list.id'|trans }}</th>
+            <th>{{ 'admin.url_list.original_url'|trans }}</th>
+            <th>{{ 'admin.url_list.short_code'|trans }}</th>
+            <th>{{ 'admin.url_list.email'|trans }}</th>
+            <th>{{ 'admin.url_list.tags'|trans }}</th>
+            <th>{{ 'admin.url_list.clicks'|trans }}</th>
+            <th>{{ 'admin.url_list.created_at'|trans }}</th>
+            <th>{{ 'admin.url_list.actions'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for url in urls %}
+            <tr>
+                <td>{{ url.id }}</td>
+                <td title="{{ url.originalUrl }}">
+                    {{ url.originalUrl|length > 50 ? url.originalUrl|slice(0, 50) ~ '...' : url.originalUrl }}
+                </td>
+                <td>{{ url.shortCode }}</td>
+                <td>{{ url.email ?? '-' }}</td>
+                <td>
+                    {% for tag in url.tags %}
+                        <span class="badge bg-secondary">{{ tag.name }}</span>
+                    {% endfor %}
+                </td>
+                <td>{{ url.clicks }}</td>
+                <td>{{ url.createdAt ? url.createdAt|date('Y-m-d H:i') : '-' }}</td>
+                <td>
+                    <a href="{{ path('admin_url_edit', {id: url.id}) }}" class="btn btn-sm btn-success me-1">
+                        {{ 'admin.url_list.edit'|trans }}
+                    </a>
+                    <form method="post" action="{{ path('admin_url_delete', {id: url.id}) }}"
+                          style="display:inline-block;" onsubmit="return confirm('{{ 'admin.url_list.confirm_delete'|trans }}');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete-url-' ~ url.id) }}">
+                        <button class="btn btn-sm btn-secondary">{{ 'admin.url_list.delete'|trans }}</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

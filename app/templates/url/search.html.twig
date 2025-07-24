@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="mb-4">{{ 'search.title'|trans }}</h1>
+
+    {{ form_start(form) }}
+    <div class="row g-3 align-items-end mb-4">
+        <div class="col-md-3">
+            {{ form_label(form.email, 'search.label.email'|trans) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="col-md-3">
+            {{ form_label(form.originalUrl, 'search.label.originalUrl'|trans) }}
+            {{ form_widget(form.originalUrl, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="col-md-2">
+            {{ form_label(form.shortCode, 'search.label.shortCode'|trans) }}
+            {{ form_widget(form.shortCode, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="col-md-3">
+            {{ form_label(form.tag, 'search.label.tag'|trans) }}
+            {{ form_widget(form.tag, {'attr': {'class': 'form-select'}}) }}
+        </div>
+
+        <div class="col-md-1">
+            <button class="btn btn-primary w-100">{{ 'search.button'|trans }}</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+    {% if urls is defined %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ 'search.table.id'|trans }}</th>
+                <th>{{ 'search.table.url'|trans }}</th>
+                <th>{{ 'search.table.short'|trans }}</th>
+                <th>{{ 'search.table.email'|trans }}</th>
+                <th>{{ 'search.table.tags'|trans }}</th>
+                <th>{{ 'search.table.clicks'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for url in urls %}
+                <tr>
+                    <td>{{ url.id }}</td>
+                    <td>{{ url.originalUrl }}</td>
+                    <td>{{ url.shortCode }}</td>
+                    <td>{{ url.email }}</td>
+                    <td>
+                        {% for tag in url.tags %}
+                            <span class="badge bg-secondary">{{ tag.name }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>{{ url.clicks }}</td>
+                </tr>
+            {% else %}
+                <tr><td colspan="6">{{ 'search.no_results'|trans }}</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

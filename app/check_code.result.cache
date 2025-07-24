@@ -1,0 +1,61 @@
+Running php-cbf... 
+
+No violations were found
+
+Time: 618ms; Memory: 8MB
+
+Running php-cs-fixer... 
+PHP CS Fixer 3.84.0 Alexander by Fabien Potencier, Dariusz Ruminski and contributors.
+PHP runtime: 8.2.12
+Running analysis on 1 core sequentially.
+You can enable parallel runner and speed up the analysis! Please see https://cs.symfony.com/doc/usage.html for more information.
+Loaded config default from "C:\xampp\htdocs\projektURL\app\.php-cs-fixer.dist.php".
+Using cache file ".php-cs-fixer.cache".
+Paths from configuration file have been overridden by paths provided as command arguments.
+  0/23 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   0%
+  3/23 [▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░]  13%
+  5/23 [▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░]  21%
+  7/23 [▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░]  30%
+ 10/23 [▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░]  43%
+ 12/23 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░]  52%
+ 14/23 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░]  60%
+ 17/23 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░]  73%
+ 19/23 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░]  82%
+ 21/23 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░]  91%
+ 23/23 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+   1) src\Controller\AdminController.php (blank_line_after_opening_tag, phpdoc_summary)
+   2) src\Controller\AdminSecurityController.php (blank_line_after_opening_tag, phpdoc_summary)
+   3) src\Controller\AdminTagController.php (blank_line_after_opening_tag, phpdoc_summary)
+   4) src\Controller\AdminUrlController.php (blank_line_after_opening_tag, phpdoc_summary)
+   5) src\Controller\SecurityController.php (blank_line_after_opening_tag, global_namespace_import, phpdoc_summary, no_unused_imports)
+   6) src\Controller\UrlController.php (class_attributes_separation, blank_line_after_opening_tag, phpdoc_summary)
+   7) src\Controller\UrlRedirectController.php (single_line_throw, blank_line_after_opening_tag, phpdoc_summary)
+   8) src\Entity\Admin.php (phpdoc_annotation_without_dot, no_superfluous_phpdoc_tags, blank_line_after_opening_tag, global_namespace_import, phpdoc_summary, phpdoc_trim)
+   9) src\Entity\Tag.php (no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim)
+  10) src\Entity\Url.php (no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_summary, phpdoc_trim, no_unused_imports)
+  11) src\Form\AdminProfileType.php (blank_line_after_opening_tag, phpdoc_summary)
+  12) src\Form\TagType.php (blank_line_after_opening_tag, phpdoc_summary)
+  13) src\Form\UrlFilterType.php (blank_line_after_opening_tag, phpdoc_summary)
+  14) src\Form\UrlType.php (blank_line_after_opening_tag, phpdoc_summary)
+  15) src\Repository\AdminRepository.php (phpdoc_summary)
+  16) src\Repository\TagRepository.php (phpdoc_summary)
+  17) src\Repository\UrlRepository.php (phpdoc_summary, blank_lines_before_namespace)
+  18) src\Security\AdminAuthenticator.php (phpdoc_summary, no_unused_imports)
+  19) src\Service\AdminService.php (phpdoc_summary)
+  20) src\Service\StatService.php (phpdoc_summary)
+  21) src\Service\TagService.php (phpdoc_summary)
+  22) src\Service\UrlService.php (global_namespace_import, phpdoc_summary, no_unused_imports)
+
+Found 22 of 23 files that can be fixed in 1.695 seconds, 18.00 MB memory used
+Running phpcs... 
+Running debug:translation (en)... 
+ ------- -------- ---- ---------------------- 
+  State   Domain   Id   Message Preview (en)  
+ ------- -------- ---- ---------------------- 
+
+Running debug:translation (pl)... 
+ ------- -------- ---- ---------------------- ------------------------------- 
+  State   Domain   Id   Message Preview (pl)   Fallback Message Preview (en)  
+ ------- -------- ---- ---------------------- ------------------------------- 
+

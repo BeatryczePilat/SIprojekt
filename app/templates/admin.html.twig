@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="text-center mt-5">
+        <h1 class="mb-3">{{ 'admin.dashboard.title'|trans }}</h1>
+        <p class="lead mb-4">{{ 'admin.dashboard.subtitle'|trans }}</p>
+
+        <div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+            <a href="{{ path('admin_url_index') }}" class="btn btn-primary">
+                {{ 'admin.dashboard.manage_urls'|trans }}
+            </a>
+            <a href="{{ path('admin_tag_index') }}" class="btn btn-outline-secondary">
+                {{ 'admin.dashboard.manage_tags'|trans }}
+            </a>
+        </div>
+
+        <div class="text-center">
+            <a href="{{ path('admin_change_password') }}" class="btn btn-outline-secondary">
+                {{ 'admin.dashboard.update_credentials'|trans }}
+            </a>
+        </div>
+    </div>
+{% endblock %}
