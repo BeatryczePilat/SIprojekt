@@ -32,3 +32,4 @@
 ###> phpstan/phpstan ###
 phpstan.neon
 ###< phpstan/phpstan ###
+echo -e "\n*\n!app/\n!app/**" >> .gitignore

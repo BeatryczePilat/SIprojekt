@@ -6,6 +6,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Enum\UserRole;
 use App\Repository\AdminRepository;
 use Deprecated;
 use Doctrine\ORM\Mapping as ORM;
@@ -30,7 +31,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var list<string> Role użytkownika
      */
-    #[ORM\Column]
+    #[ORM\Column(type: 'json')]
     private array $roles = [];
 
     /**
@@ -76,12 +77,12 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Pobiera role użytkownika.
      *
-     * @return string[]
+     * @return array|string[] array|string[]
      */
     public function getRoles(): array
     {
         $roles = $this->roles;
-        $roles[] = 'ROLE_USER';
+        $roles[] = UserRole::ROLE_USER->value;
 
         return array_unique($roles);
     }
@@ -89,14 +90,15 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Ustawia role użytkownika.
      *
-     * @param string[] $roles
+     * @param array $roles roles array
+     *
+     * @return void void
      */
-    public function setRoles(array $roles): static
+    public function setRoles(array $roles): void
     {
         $this->roles = $roles;
-
-        return $this;
     }
+
 
     /**
      * Pobiera zaszyfrowane hasło.
