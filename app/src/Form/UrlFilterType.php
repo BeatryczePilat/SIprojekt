@@ -22,7 +22,7 @@ class UrlFilterType extends AbstractType
      * Obsługa budowania formularza filtrowania URL.
      *
      * @param FormBuilderInterface $builder Obiekt budujący formularz
-     * @param array                $options Opcje przekazane do formularza
+     * @param array<string, mixed> $options Opcje przekazane do formularza
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

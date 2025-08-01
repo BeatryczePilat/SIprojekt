@@ -10,7 +10,7 @@
             <th>{{ 'admin.url_list.original_url'|trans }}</th>
             <th>{{ 'admin.url_list.short_code'|trans }}</th>
             <th>{{ 'admin.url_list.email'|trans }}</th>
-            <th>{{ 'admin.url_list.tags'|trans }}</th>
+            <th>{{ 'admin.url_list.tag'|trans }}</th>
             <th>{{ 'admin.url_list.clicks'|trans }}</th>
             <th>{{ 'admin.url_list.created_at'|trans }}</th>
             <th>{{ 'admin.url_list.actions'|trans }}</th>
@@ -26,8 +26,8 @@
                 <td>{{ url.shortCode }}</td>
                 <td>{{ url.email ?? '-' }}</td>
                 <td>
-                    {% for tag in url.tags %}
-                        <span class="badge bg-secondary">{{ tag.name }}</span>
+                    {% for tag in url.tag %}
+                        <span class="badge bg-secondary">{{ url.tag.name }}</span>
                     {% endfor %}
                 </td>
                 <td>{{ url.clicks }}</td>

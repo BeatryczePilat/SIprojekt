@@ -53,7 +53,7 @@ class AdminController extends AbstractController
     #[IsGranted('ROLE_ADMIN')]
     public function profile(Request $request, AdminService $adminService): Response
     {
-        /** @var Admin $admin Aktualnie zalogowany administrator */
+
         $admin = $this->getUser();
         if (!$admin instanceof Admin) {
             throw $this->createAccessDeniedException();

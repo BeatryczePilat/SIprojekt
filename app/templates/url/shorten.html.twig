@@ -33,9 +33,10 @@
                         </div>
 
                         <div class="mb-3">
-                            {{ form_label(form.tags, 'shorten.label.tags'|trans, {'label_attr': {'class': 'form-label'}}) }}
-                            {{ form_widget(form.tags, {'attr': {'class': 'form-select', 'multiple': true}}) }}
-                            {{ form_errors(form.tags) }}
+                            {{ form_label(form.tag, 'shorten.label.tag'|trans) }}
+                            {{ form_widget(form.tag, {'attr': {'class': 'form-select'}}) }}
+                            {{ form_errors(form.tag) }}
+
                         </div>
 
                         <div class="d-grid">

@@ -7,14 +7,15 @@
 namespace App\Entity;
 
 use App\Repository\UrlRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Reprezentuje encję Url, przechowującą informacje o skróconych adresach URL.
  */
 #[ORM\Entity(repositoryClass: UrlRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Url
 {
     #[ORM\Id]
@@ -35,26 +36,17 @@ class Url
     private ?int $clicks = null;
 
     #[ORM\Column(type: 'datetime')]
-    private ?\DateTimeInterface $createdAt = null;
+    private ?DateTimeInterface $createdAt = null;
 
     #[ORM\Column(type: 'datetime')]
-    private ?\DateTimeInterface $updatedAt = null;
+    private ?DateTimeInterface $updatedAt = null;
 
     /**
-     * @var Collection<int, Tag>
+     * @var Tag|null
      */
-    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'urls')]
-    private Collection $tags;
-
-    /**
-     * Inicjalizuje nową instancję encji Url.
-     *
-     * Ustawia właściwość tags jako pustą kolekcję ArrayCollection.
-     */
-    public function __construct()
-    {
-        $this->tags = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(targetEntity: Tag::class)]
+    #[ORM\JoinColumn(nullable: true, onDelete: "SET NULL")]
+    private ?Tag $tag = null;
 
     /**
      * Pobiera unikalny identyfikator adresu URL.
@@ -157,9 +149,9 @@ class Url
     /**
      * Pobiera datę utworzenia adresu URL.
      *
-     * @return \DateTimeInterface|null Data utworzenia lub null, jeśli nie ustawiono
+     * @return DateTimeInterface|null Data utworzenia lub null, jeśli nie ustawiono
      */
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
@@ -167,9 +159,9 @@ class Url
     /**
      * Ustawia datę utworzenia adresu URL.
      *
-     * @param \DateTimeInterface $createdAt Data utworzenia do ustawienia
+     * @param DateTimeInterface $createdAt Data utworzenia do ustawienia
      */
-    public function setCreatedAt(\DateTimeInterface $createdAt): static
+    public function setCreatedAt(DateTimeInterface $createdAt): static
     {
         $this->createdAt = $createdAt;
 
@@ -179,9 +171,9 @@ class Url
     /**
      * Pobiera datę ostatniej aktualizacji adresu URL.
      *
-     * @return \DateTimeInterface|null Data aktualizacji lub null, jeśli nie ustawiono
+     * @return DateTimeInterface|null Data aktualizacji lub null, jeśli nie ustawiono
      */
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updatedAt;
     }
@@ -189,9 +181,9 @@ class Url
     /**
      * Ustawia datę ostatniej aktualizacji adresu URL.
      *
-     * @param \DateTimeInterface $updatedAt Data aktualizacji do ustawienia
+     * @param DateTimeInterface $updatedAt Data aktualizacji do ustawienia
      */
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): static
+    public function setUpdatedAt(DateTimeInterface $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 
@@ -201,36 +193,34 @@ class Url
     /**
      * Pobiera kolekcję tagów powiązanych z adresem URL.
      *
-     * @return Collection<int, Tag>
+     * @return Tag|null
      */
-    public function getTags(): Collection
+    public function getTag(): ?Tag
     {
-        return $this->tags;
+        return $this->tag;
     }
 
     /**
-     * Dodaje tag do kolekcji adresu URL.
-     *
-     * @param Tag $tag Tag do dodania
+     * @param Tag|null $tag
+     * @return $this
      */
-    public function addTag(Tag $tag): static
+    public function setTag(?Tag $tag): static
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags->add($tag);
+        $this->tag = $tag;
+        return $this;
+    }
+
+    /**
+     * Automatycznie ustawia daty przed zapisem do bazy.
+     */
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updateTimestamps(): void
+    {
+        $this->updatedAt = new DateTimeImmutable();
+
+        if ($this->createdAt === null) {
+            $this->createdAt = new DateTimeImmutable();
         }
-
-        return $this;
-    }
-
-    /**
-     * Usuwa tag z kolekcji adresu URL.
-     *
-     * @param Tag $tag Tag do usunięcia
-     */
-    public function removeTag(Tag $tag): static
-    {
-        $this->tags->removeElement($tag);
-
-        return $this;
     }
 }

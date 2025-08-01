@@ -74,20 +74,20 @@ class UrlController extends AbstractController
     /**
      * Wyświetla najnowsze adresy URL (paginacja).
      *
-     * @param int        $page       Numer strony
+     * @param Request $request
      * @param UrlService $urlService Serwis do obsługi URL
      *
      * @return Response Odpowiedź HTML z listą adresów
      */
-    #[Route('/latest/{page}', name: 'url_latest', requirements: ['page' => '\d+'], defaults: ['page' => 1])]
-    public function latest(int $page, UrlService $urlService): Response
+    #[Route('/latest', name: 'url_latest')]
+    public function latest(Request $request, UrlService $urlService): Response
     {
-        $result = $urlService->getLatestUrlsPaginated($page);
+        $pagination = $urlService->getLatestUrlsPaginated(
+            $request->query->getInt('page', 1)
+        );
 
         return $this->render('url/latest.html.twig', [
-            'urls' => $result['data'],
-            'pages' => $result['pages'],
-            'currentPage' => $page,
+            'pagination' => $pagination,
         ]);
     }
 
@@ -113,20 +113,20 @@ class UrlController extends AbstractController
     /**
      * Wyświetla najpopularniejsze adresy URL (paginacja).
      *
-     * @param int        $page       Numer strony
+     * @param Request $request Obiekt żądania HTTP
      * @param UrlService $urlService Serwis do obsługi URL
      *
      * @return Response Odpowiedź HTML z listą adresów
      */
-    #[Route('/popular/{page}', name: 'url_popular', requirements: ['page' => '\d+'], defaults: ['page' => 1])]
-    public function popular(int $page, UrlService $urlService): Response
+    #[Route('/popular', name: 'url_popular')]
+    public function popular(Request $request, UrlService $urlService): Response
     {
-        $result = $urlService->getMostClickedPaginated($page);
+        $pagination = $urlService->getMostClickedPaginated(
+            $request->query->getInt('page', 1)
+        );
 
         return $this->render('url/popular.html.twig', [
-            'urls' => $result['data'],
-            'pages' => $result['pages'],
-            'currentPage' => $page,
+            'pagination' => $pagination,
         ]);
     }
 

@@ -90,7 +90,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Ustawia role użytkownika.
      *
-     * @param array $roles roles array
+     * @param string[] $roles roles string
      *
      * @return void void
      */
@@ -123,7 +123,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
      *
      * @deprecated usunięcie planowane przy aktualizacji do Symfony 8
      */
-    #[\Deprecated]
+    #[Deprecated]
     public function eraseCredentials(): void
     {
         // Do nothing

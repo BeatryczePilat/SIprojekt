@@ -111,7 +111,7 @@ class AdminTagController extends AbstractController
     #[Route('/{id}/delete', name: 'admin_tag_delete', methods: ['POST'])]
     public function delete(Request $request, Tag $tag, TagService $tagService): Response
     {
-        if ($this->isCsrfTokenValid('delete-tag-'.$tag->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete-tag-' . $tag->getId(), $request->request->get('_token'))) {
             $tagService->deleteTag($tag);
             $this->addFlash('success', $this->translator->trans('flash.tag.deleted'));
         }

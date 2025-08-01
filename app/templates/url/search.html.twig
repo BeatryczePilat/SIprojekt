@@ -39,7 +39,7 @@
                 <th>{{ 'search.table.url'|trans }}</th>
                 <th>{{ 'search.table.short'|trans }}</th>
                 <th>{{ 'search.table.email'|trans }}</th>
-                <th>{{ 'search.table.tags'|trans }}</th>
+                <th>{{ 'search.table.tag'|trans }}</th>
                 <th>{{ 'search.table.clicks'|trans }}</th>
             </tr>
             </thead>
@@ -51,7 +51,7 @@
                     <td>{{ url.shortCode }}</td>
                     <td>{{ url.email }}</td>
                     <td>
-                        {% for tag in url.tags %}
+                        {% for tag in url.tag %}
                             <span class="badge bg-secondary">{{ tag.name }}</span>
                         {% endfor %}
                     </td>

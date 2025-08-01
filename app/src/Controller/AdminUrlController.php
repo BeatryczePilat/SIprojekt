@@ -83,7 +83,7 @@ class AdminUrlController extends AbstractController
     #[Route('/{id}/delete', name: 'admin_url_delete', methods: ['POST'])]
     public function delete(Request $request, Url $url, UrlService $urlService): Response
     {
-        if ($this->isCsrfTokenValid('delete-url-'.$url->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete-url-' . $url->getId(), $request->request->get('_token'))) {
             $urlService->deleteUrl($url);
             $this->addFlash('success', $this->translator->trans('flash.url.deleted'));
         }

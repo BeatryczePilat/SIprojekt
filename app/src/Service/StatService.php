@@ -25,7 +25,7 @@ readonly class StatService
     /**
      * Zwraca zestaw podstawowych statystyk.
      *
-     * @return array tablica danych statystycznych
+     * @return array<string, int> tablica danych statystycznych
      */
     public function getStats(): array
     {

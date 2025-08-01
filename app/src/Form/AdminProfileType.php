@@ -22,7 +22,7 @@ class AdminProfileType extends AbstractType
      * Buduje formularz profilu administratora.
      *
      * @param FormBuilderInterface $builder Obiekt budujący formularz
-     * @param array                $options Opcje formularza
+     * @param array<string, mixed> $options Opcje formularza
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

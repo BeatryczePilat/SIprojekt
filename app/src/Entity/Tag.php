@@ -7,8 +7,6 @@
 namespace App\Entity;
 
 use App\Repository\TagRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,24 +23,8 @@ class Tag
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    /**
-     * @var Collection<int, Url>
-     */
-    #[ORM\ManyToMany(targetEntity: Url::class, mappedBy: 'tags')]
-    private Collection $urls;
-
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
-
-    /**
-     * Inicjalizuje nową instancję encji Tag.
-     *
-     * Ustawia właściwość urls jako pustą kolekcję ArrayCollection.
-     */
-    public function __construct()
-    {
-        $this->urls = new ArrayCollection();
-    }
 
     /**
      * Pobiera unikalny identyfikator tagu.
@@ -72,45 +54,6 @@ class Tag
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Pobiera kolekcję adresów URL powiązanych z tym tagiem.
-     *
-     * @return Collection<int, Url>
-     */
-    public function getUrls(): Collection
-    {
-        return $this->urls;
-    }
-
-    /**
-     * Dodaje adres URL do kolekcji tagu.
-     *
-     * @param Url $url Adres URL do dodania
-     */
-    public function addUrl(Url $url): static
-    {
-        if (!$this->urls->contains($url)) {
-            $this->urls->add($url);
-            $url->addTag($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Usuwa adres URL z kolekcji tagu.
-     *
-     * @param Url $url Adres URL do usunięcia
-     */
-    public function removeUrl(Url $url): static
-    {
-        if ($this->urls->removeElement($url)) {
-            $url->removeTag($this);
-        }
 
         return $this;
     }

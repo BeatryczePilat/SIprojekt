@@ -24,7 +24,7 @@ class UrlType extends AbstractType
      * Obsługa budowania formularza adresu URL.
      *
      * @param FormBuilderInterface $builder Obiekt budujący formularz
-     * @param array                $options Opcje przekazane do formularza
+     * @param array<string, mixed> $options Opcje przekazane do formularza
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -36,13 +36,12 @@ class UrlType extends AbstractType
                 'required' => false,
                 'label' => 'form.url.email.label',
             ])
-            ->add('tags', EntityType::class, [
+            ->add('tag', EntityType::class, [
                 'class' => Tag::class,
-                'choice_label' => 'name',
-                'multiple' => true,
-                'expanded' => false,
                 'required' => false,
-                'label' => 'form.url.tags.label',
+                'placeholder' => '-- wybierz tag --',
+                'choice_label' => 'name',
+                'label' => 'form.url.tag.label',
             ]);
     }
 

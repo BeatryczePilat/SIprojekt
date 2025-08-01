@@ -138,8 +138,8 @@
         <source>shorten.label.email</source>
         <target>Email address</target>
       </trans-unit>
-      <trans-unit id="shorten.label.tags">
-        <source>shorten.label.tags</source>
+      <trans-unit id="shorten.label.tag">
+        <source>shorten.label.tag</source>
         <target>Tags</target>
       </trans-unit>
       <trans-unit id="shorten.button">
@@ -459,9 +459,9 @@
         <source>form.url.email.label</source>
         <target>Email (optional)</target>
       </trans-unit>
-      <trans-unit id="form.url.tags.label">
-        <source>form.url.tags.label</source>
-        <target>Tags (optional)</target>
+      <trans-unit id="form.url.tag.label">
+        <source>form.url.tag.label</source>
+        <target>Tag (optional)</target>
       </trans-unit>
       <trans-unit id="form.url_filter.email.label">
         <source>form.url_filter.email.label</source>

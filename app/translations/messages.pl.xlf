@@ -1,553 +1,487 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="pl" datatype="plaintext" original="file.ext">
+  <file source-language="pl" target-language="pl" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
     <body>
-      <trans-unit id="app.title">
-              <source>app.title</source>
-              <target>Skracacz URL</target>
-            </trans-unit>
-      <trans-unit id="navbar.brand">
+      <trans-unit id="rujVJ3G" resname="app.title">
+        <source>app.title</source>
+        <target>Skracacz URL</target>
+      </trans-unit>
+      <trans-unit id="VMWiSXw" resname="navbar.brand">
         <source>navbar.brand</source>
         <target>Skracacz URL-ów</target>
       </trans-unit>
-      <trans-unit id="navbar.latest">
+      <trans-unit id="6iH.m06" resname="navbar.latest">
         <source>navbar.latest</source>
         <target>Ostatnie</target>
       </trans-unit>
-      <trans-unit id="navbar.popular">
+      <trans-unit id="wzr64A_" resname="navbar.popular">
         <source>navbar.popular</source>
         <target>Popularne</target>
       </trans-unit>
-      <trans-unit id="navbar.shorten">
+      <trans-unit id="DhmxnQj" resname="navbar.shorten">
         <source>navbar.shorten</source>
         <target>Skróć adres</target>
       </trans-unit>
-      <trans-unit id="navbar.search">
+      <trans-unit id="xjaG1KP" resname="navbar.search">
         <source>navbar.search</source>
         <target>Szukaj</target>
       </trans-unit>
-      <trans-unit id="navbar.stats">
+      <trans-unit id="GVZiNaf" resname="navbar.stats">
         <source>navbar.stats</source>
         <target>Statystyki</target>
       </trans-unit>
-      <trans-unit id="navbar.admin">
+      <trans-unit id="gphGQyT" resname="navbar.admin">
         <source>navbar.admin</source>
         <target>Admin</target>
       </trans-unit>
-      <trans-unit id="navbar.admin_panel">
+      <trans-unit id="369.y41" resname="navbar.admin_panel">
         <source>navbar.admin_panel</source>
         <target>Panel administratora</target>
       </trans-unit>
-      <trans-unit id="navbar.manage_urls">
+      <trans-unit id="XdsnVEu" resname="navbar.manage_urls">
         <source>navbar.manage_urls</source>
         <target>Zarządzaj URLami</target>
       </trans-unit>
-      <trans-unit id="navbar.manage_tags">
+      <trans-unit id="1weYJiC" resname="navbar.manage_tags">
         <source>navbar.manage_tags</source>
         <target>Zarządzaj tagami</target>
       </trans-unit>
-      <trans-unit id="navbar.login">
+      <trans-unit id="I5qdD7E" resname="navbar.login">
         <source>navbar.login</source>
         <target>Zaloguj</target>
       </trans-unit>
-      <trans-unit id="navbar.logout">
+      <trans-unit id="t8oQeWx" resname="navbar.logout">
         <source>navbar.logout</source>
         <target>Wyloguj</target>
       </trans-unit>
-      <trans-unit id="admin.dashboard.title">
+      <trans-unit id="vHY7yX3" resname="admin.dashboard.title">
         <source>admin.dashboard.title</source>
         <target>Witaj w panelu administratora</target>
       </trans-unit>
-      <trans-unit id="admin.dashboard.subtitle">
+      <trans-unit id="V5kpUvu" resname="admin.dashboard.subtitle">
         <source>admin.dashboard.subtitle</source>
         <target>Tutaj możesz zarządzać tagami, adresami URL i kontem admina.</target>
       </trans-unit>
-      <trans-unit id="admin.dashboard.manage_urls">
+      <trans-unit id="FVje1xt" resname="admin.dashboard.manage_urls">
         <source>admin.dashboard.manage_urls</source>
         <target>Zarządzaj URLami</target>
       </trans-unit>
-      <trans-unit id="admin.dashboard.manage_tags">
+      <trans-unit id="WvqmGA2" resname="admin.dashboard.manage_tags">
         <source>admin.dashboard.manage_tags</source>
         <target>Zarządzaj tagami</target>
       </trans-unit>
-      <trans-unit id="admin.dashboard.update_credentials">
+      <trans-unit id="FLJ57z9" resname="admin.dashboard.update_credentials">
         <source>admin.dashboard.update_credentials</source>
         <target>Zmień dane logowania</target>
       </trans-unit>
-      <trans-unit id="stats.title">
+      <trans-unit id="B_CVv4e" resname="stats.title">
         <source>stats.title</source>
         <target>Statystyki ogólne</target>
       </trans-unit>
-      <trans-unit id="stats.total_urls">
+      <trans-unit id="1Bew6UU" resname="stats.total_urls">
         <source>stats.total_urls</source>
         <target>Wszystkie skrócone adresy:</target>
       </trans-unit>
-      <trans-unit id="stats.recent_urls">
+      <trans-unit id="T1zOYO1" resname="stats.recent_urls">
         <source>stats.recent_urls</source>
         <target>Ostatnio dodane linki:</target>
       </trans-unit>
-      <trans-unit id="stats.total_clicks">
+      <trans-unit id="eZto8VE" resname="stats.total_clicks">
         <source>stats.total_clicks</source>
         <target>Suma kliknięć:</target>
       </trans-unit>
-      <trans-unit id="stats.most_clicked">
+      <trans-unit id="Ly4h41c" resname="stats.most_clicked">
         <source>stats.most_clicked</source>
         <target>Najczęściej klikane linki:</target>
       </trans-unit>
-      <trans-unit id="stats.clicks">
+      <trans-unit id="YWrqICP" resname="stats.clicks">
         <source>stats.clicks</source>
         <target>Kliknięcia</target>
       </trans-unit>
-      <trans-unit id="stats.short_code">
+      <trans-unit id="5swPF2z" resname="stats.short_code">
         <source>stats.short_code</source>
         <target>Skrót</target>
       </trans-unit>
-      <trans-unit id="stats.unique_emails">
+      <trans-unit id="ob5X.A6" resname="stats.unique_emails">
         <source>stats.unique_emails</source>
         <target>Unikalne e-maile:</target>
       </trans-unit>
-      <trans-unit id="stats.total_tags">
+      <trans-unit id="A5uGqye" resname="stats.total_tags">
         <source>stats.total_tags</source>
         <target>Liczba tagów:</target>
       </trans-unit>
-      <trans-unit id="stats.no_data">
+      <trans-unit id="s1bgRWp" resname="stats.no_data">
         <source>stats.no_data</source>
         <target>Brak danych.</target>
       </trans-unit>
-      <trans-unit id="stats.no_emails">
+      <trans-unit id="5pvOTRJ" resname="stats.no_emails">
         <source>stats.no_emails</source>
         <target>Brak e-maili.</target>
       </trans-unit>
-      <trans-unit id="stats.no_tags">
+      <trans-unit id="ExgSk7y" resname="stats.no_tags">
         <source>stats.no_tags</source>
         <target>Brak tagów.</target>
       </trans-unit>
-      <trans-unit id="shorten.title">
+      <trans-unit id="NgWa4UK" resname="shorten.title">
         <source>shorten.title</source>
         <target>Skracanie adresu URL</target>
       </trans-unit>
-      <trans-unit id="shorten.success">
+      <trans-unit id="nCa5YGG" resname="shorten.success">
         <source>shorten.success</source>
         <target>Twój skrócony URL:</target>
       </trans-unit>
-      <trans-unit id="shorten.label.original_url">
+      <trans-unit id="brPdewt" resname="shorten.label.original_url">
         <source>shorten.label.original_url</source>
         <target>Adres URL</target>
       </trans-unit>
-      <trans-unit id="shorten.label.email">
+      <trans-unit id="l2YZkxH" resname="shorten.label.email">
         <source>shorten.label.email</source>
         <target>Adres e-mail</target>
       </trans-unit>
-      <trans-unit id="shorten.label.tags">
-        <source>shorten.label.tags</source>
+      <trans-unit id="Iim4xxa" resname="shorten.label.tag">
+        <source>shorten.label.tag</source>
         <target>Tagi</target>
       </trans-unit>
-      <trans-unit id="shorten.button">
+      <trans-unit id="bqga6Mf" resname="shorten.button">
         <source>shorten.button</source>
         <target>Skróć</target>
       </trans-unit>
-      <trans-unit id="search.title">
+      <trans-unit id="yilqzBQ" resname="search.title">
         <source>search.title</source>
         <target>Wyszukiwarka linków</target>
       </trans-unit>
-      <trans-unit id="search.label.email">
+      <trans-unit id="rwYZUSB" resname="search.label.email">
         <source>search.label.email</source>
         <target>Adres e-mail</target>
       </trans-unit>
-      <trans-unit id="search.label.originalUrl">
+      <trans-unit id="VqflmjZ" resname="search.label.originalUrl">
         <source>search.label.originalUrl</source>
         <target>Adres URL</target>
       </trans-unit>
-      <trans-unit id="search.label.shortCode">
+      <trans-unit id="2BldObH" resname="search.label.shortCode">
         <source>search.label.shortCode</source>
         <target>Skrót</target>
       </trans-unit>
-      <trans-unit id="search.label.tag">
+      <trans-unit id="UWPZMY6" resname="search.label.tag">
         <source>search.label.tag</source>
         <target>Tag</target>
       </trans-unit>
-      <trans-unit id="search.button">
+      <trans-unit id="pfR3ajS" resname="search.button">
         <source>search.button</source>
         <target>Szukaj</target>
       </trans-unit>
-      <trans-unit id="search.table.id">
+      <trans-unit id="THou1.8" resname="search.table.id">
         <source>search.table.id</source>
         <target>ID</target>
       </trans-unit>
-      <trans-unit id="search.table.url">
+      <trans-unit id="wJel_5X" resname="search.table.url">
         <source>search.table.url</source>
         <target>URL</target>
       </trans-unit>
-      <trans-unit id="search.table.short">
+      <trans-unit id="0fFGFQW" resname="search.table.short">
         <source>search.table.short</source>
         <target>Skrót</target>
       </trans-unit>
-      <trans-unit id="search.table.email">
+      <trans-unit id="j6kQUbJ" resname="search.table.email">
         <source>search.table.email</source>
         <target>Email</target>
       </trans-unit>
-      <trans-unit id="search.table.tags">
-        <source>search.table.tags</source>
+      <trans-unit id="DowwOLQ" resname="search.table.tag">
+        <source>search.table.tag</source>
         <target>Tagi</target>
       </trans-unit>
-      <trans-unit id="search.table.clicks">
+      <trans-unit id="i4WOXv9" resname="search.table.clicks">
         <source>search.table.clicks</source>
         <target>Kliknięcia</target>
       </trans-unit>
-      <trans-unit id="search.no_results">
+      <trans-unit id="wYcx0So" resname="search.no_results">
         <source>search.no_results</source>
         <target>Brak wyników.</target>
       </trans-unit>
-      <trans-unit id="popular.title">
+      <trans-unit id="i34CJPZ" resname="popular.title">
         <source>popular.title</source>
         <target>Najczęściej klikane linki</target>
       </trans-unit>
-      <trans-unit id="popular.header.short">
+      <trans-unit id="b9CpMTt" resname="popular.header.short">
         <source>popular.header.short</source>
         <target>Skrót</target>
       </trans-unit>
-      <trans-unit id="popular.header.url">
+      <trans-unit id="x5PbSZO" resname="popular.header.url">
         <source>popular.header.url</source>
         <target>Oryginalny URL</target>
       </trans-unit>
-      <trans-unit id="popular.header.clicks">
+      <trans-unit id="OQX4EIW" resname="popular.header.clicks">
         <source>popular.header.clicks</source>
         <target>Kliknięcia</target>
       </trans-unit>
-      <trans-unit id="popular.header.date">
+      <trans-unit id="xOD.LN7" resname="popular.header.date">
         <source>popular.header.date</source>
         <target>Data</target>
       </trans-unit>
-      <trans-unit id="popular.no_results">
+      <trans-unit id="Usea2XH" resname="popular.no_results">
         <source>popular.no_results</source>
         <target>Brak wyników.</target>
       </trans-unit>
-      <trans-unit id="latest.title">
+      <trans-unit id="9UIjXo1" resname="latest.title">
         <source>latest.title</source>
         <target>Ostatnio dodane linki</target>
       </trans-unit>
-      <trans-unit id="latest.original_url">
+      <trans-unit id="rPm0CaA" resname="latest.original_url">
         <source>latest.original_url</source>
         <target>Oryginalny URL</target>
       </trans-unit>
-      <trans-unit id="latest.short_code">
+      <trans-unit id="31AIjbF" resname="latest.short_code">
         <source>latest.short_code</source>
         <target>Skrót</target>
       </trans-unit>
-      <trans-unit id="latest.created_at">
+      <trans-unit id="QKLGqCu" resname="latest.created_at">
         <source>latest.created_at</source>
         <target>Data dodania</target>
       </trans-unit>
-      <trans-unit id="latest.clicks">
+      <trans-unit id="4Y.hUTm" resname="latest.clicks">
         <source>latest.clicks</source>
         <target>Kliknięcia</target>
       </trans-unit>
-      <trans-unit id="latest.no_data">
+      <trans-unit id="4huAwmc" resname="latest.no_data">
         <source>latest.no_data</source>
         <target>Brak danych</target>
       </trans-unit>
-      <trans-unit id="tagged_links.title">
+      <trans-unit id="5jTZNeR" resname="tagged_links.title">
         <source>tagged_links.title</source>
         <target>Linki z tagiem: %tag%</target>
       </trans-unit>
-      <trans-unit id="tagged_links.original_url">
+      <trans-unit id="4CjLwcA" resname="tagged_links.original_url">
         <source>tagged_links.original_url</source>
         <target>Oryginalny URL</target>
       </trans-unit>
-      <trans-unit id="tagged_links.short_code">
+      <trans-unit id="xQFujJX" resname="tagged_links.short_code">
         <source>tagged_links.short_code</source>
         <target>Skrót</target>
       </trans-unit>
-      <trans-unit id="tagged_links.created_at">
+      <trans-unit id="otKfArq" resname="tagged_links.created_at">
         <source>tagged_links.created_at</source>
         <target>Data dodania</target>
       </trans-unit>
-      <trans-unit id="tagged_links.clicks">
+      <trans-unit id="7t1wXjC" resname="tagged_links.clicks">
         <source>tagged_links.clicks</source>
         <target>Kliknięcia</target>
       </trans-unit>
-      <trans-unit id="tagged_links.no_results">
+      <trans-unit id="Hx_ZOmc" resname="tagged_links.no_results">
         <source>tagged_links.no_results</source>
         <target>Brak wyników</target>
       </trans-unit>
-      <trans-unit id="edit_url.title">
+      <trans-unit id="R_NG_3F" resname="edit_url.title">
         <source>edit_url.title</source>
         <target>Edycja adresu</target>
       </trans-unit>
-      <trans-unit id="edit_url.original_url">
+      <trans-unit id="XI6A9iW" resname="edit_url.original_url">
         <source>edit_url.original_url</source>
         <target>Oryginalny URL</target>
       </trans-unit>
-      <trans-unit id="edit_url.email">
+      <trans-unit id="ZSansAO" resname="edit_url.email">
         <source>edit_url.email</source>
         <target>Email</target>
       </trans-unit>
-      <trans-unit id="edit_url.tags">
-        <source>edit_url.tags</source>
+      <trans-unit id="nmjZqat" resname="edit_url.tag">
+        <source>edit_url.tag</source>
         <target>Tagi</target>
       </trans-unit>
-      <trans-unit id="edit_url.save_button">
+      <trans-unit id="SzdWnRv" resname="edit_url.save_button">
         <source>edit_url.save_button</source>
         <target>Zapisz</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.title">
+      <trans-unit id="BGtO73I" resname="admin.url_list.title">
         <source>admin.url_list.title</source>
         <target>Lista wszystkich skróconych adresów</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.id">
+      <trans-unit id="iQg1TYK" resname="admin.url_list.id">
         <source>admin.url_list.id</source>
         <target>ID</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.original_url">
+      <trans-unit id="DWXOSSN" resname="admin.url_list.original_url">
         <source>admin.url_list.original_url</source>
         <target>Oryginalny URL</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.short_code">
+      <trans-unit id="J1YoKiC" resname="admin.url_list.short_code">
         <source>admin.url_list.short_code</source>
         <target>Skrót</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.email">
+      <trans-unit id="5NjwNnq" resname="admin.url_list.email">
         <source>admin.url_list.email</source>
         <target>Email</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.tags">
-        <source>admin.url_list.tags</source>
+      <trans-unit id="0RpDB0s" resname="admin.url_list.tag">
+        <source>admin.url_list.tag</source>
         <target>Tagi</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.clicks">
+      <trans-unit id="6DIYwss" resname="admin.url_list.clicks">
         <source>admin.url_list.clicks</source>
         <target>Kliknięcia</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.created_at">
+      <trans-unit id="gONKW3c" resname="admin.url_list.created_at">
         <source>admin.url_list.created_at</source>
         <target>Data</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.actions">
+      <trans-unit id="TqQ47J8" resname="admin.url_list.actions">
         <source>admin.url_list.actions</source>
         <target>Akcje</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.edit">
+      <trans-unit id="iL.YH4z" resname="admin.url_list.edit">
         <source>admin.url_list.edit</source>
         <target>Edytuj</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.delete">
+      <trans-unit id="aPiabFY" resname="admin.url_list.delete">
         <source>admin.url_list.delete</source>
         <target>Usuń</target>
       </trans-unit>
-      <trans-unit id="admin.url_list.confirm_delete">
+      <trans-unit id="NjHe_tS" resname="admin.url_list.confirm_delete">
         <source>admin.url_list.confirm_delete</source>
         <target>Na pewno usunąć?</target>
       </trans-unit>
-      <trans-unit id="form.save">
+      <trans-unit id="Ci3qibM" resname="form.save">
         <source>form.save</source>
         <target>Zapisz</target>
       </trans-unit>
-      <trans-unit id="tag.list.title">
+      <trans-unit id="clxP87Y" resname="tag.list.title">
         <source>tag.list.title</source>
         <target>Lista tagów</target>
       </trans-unit>
-      <trans-unit id="tag.list.add">
+      <trans-unit id="ZsXQl0R" resname="tag.list.add">
         <source>tag.list.add</source>
         <target>Dodaj tag</target>
       </trans-unit>
-      <trans-unit id="tag.id">
+      <trans-unit id="wQ05T1C" resname="tag.id">
         <source>tag.id</source>
         <target>ID</target>
       </trans-unit>
-      <trans-unit id="tag.name">
+      <trans-unit id="YqAtmOj" resname="tag.name">
         <source>tag.name</source>
         <target>Nazwa</target>
       </trans-unit>
-      <trans-unit id="tag.slug">
+      <trans-unit id="pFww7uc" resname="tag.slug">
         <source>tag.slug</source>
         <target>Slug</target>
       </trans-unit>
-      <trans-unit id="tag.actions">
+      <trans-unit id="BtYFp2G" resname="tag.actions">
         <source>tag.actions</source>
         <target>Akcje</target>
       </trans-unit>
-      <trans-unit id="tag.edit">
+      <trans-unit id="ju.x8dg" resname="tag.edit">
         <source>tag.edit</source>
         <target>Edytuj</target>
       </trans-unit>
-      <trans-unit id="tag.delete">
+      <trans-unit id="CMnkRVB" resname="tag.delete">
         <source>tag.delete</source>
         <target>Usuń</target>
       </trans-unit>
-      <trans-unit id="tag.delete.confirm">
+      <trans-unit id="98gk7ag" resname="tag.delete.confirm">
         <source>tag.delete.confirm</source>
         <target>Na pewno usunąć?</target>
       </trans-unit>
-      <trans-unit id="admin.login_data.title">
+      <trans-unit id="gnA0_Vt" resname="admin.login_data.title">
         <source>admin.login_data.title</source>
         <target>Zmiana danych logowania</target>
       </trans-unit>
-      <trans-unit id="admin.login_data.current_password">
+      <trans-unit id="wt.g99p" resname="admin.login_data.current_password">
         <source>admin.login_data.current_password</source>
         <target>Obecne hasło</target>
       </trans-unit>
-      <trans-unit id="admin.login_data.new_password">
+      <trans-unit id="jYsSZ10" resname="admin.login_data.new_password">
         <source>admin.login_data.new_password</source>
         <target>Nowe hasło</target>
       </trans-unit>
-      <trans-unit id="admin.login_data.email">
+      <trans-unit id="MWFaqia" resname="admin.login_data.email">
         <source>admin.login_data.email</source>
         <target>Adres e-mail</target>
       </trans-unit>
-      <trans-unit id="admin.login_data.submit">
+      <trans-unit id="O_ak6uI" resname="admin.login_data.submit">
         <source>admin.login_data.submit</source>
         <target>Zapisz zmiany</target>
       </trans-unit>
-      <trans-unit id="login.title">
+      <trans-unit id="Kd99AFq" resname="login.title">
         <source>login.title</source>
         <target>Logowanie</target>
       </trans-unit>
-      <trans-unit id="login.heading">
+      <trans-unit id="SKov_HS" resname="login.heading">
         <source>login.heading</source>
         <target>Zaloguj się</target>
       </trans-unit>
-      <trans-unit id="login.email">
+      <trans-unit id="g8hJY.0" resname="login.email">
         <source>login.email</source>
         <target>Email</target>
       </trans-unit>
-      <trans-unit id="login.password">
+      <trans-unit id="guXTUCg" resname="login.password">
         <source>login.password</source>
         <target>Hasło</target>
       </trans-unit>
-      <trans-unit id="login.submit">
+      <trans-unit id="jlMj..y" resname="login.submit">
         <source>login.submit</source>
         <target>Zaloguj się</target>
       </trans-unit>
-      <trans-unit id="login.already_logged_in_prefix">
-        <source>login.already_logged_in_prefix</source>
-        <target>Jesteś już zalogowany jako %email%,</target>
+      <trans-unit id="TSh6xKG" resname="login.already_logged_in">
+        <source>login.already_logged_in</source>
+        <target>Jesteś zalogowany.</target>
       </trans-unit>
-      <trans-unit id="login.already_logged_in">
-          <source>login.already_logged_in</source>
-          <target>Jesteś zalogowany.</target>
-      </trans-unit>
-
-      <trans-unit id="login.logout">
-        <source>login.logout</source>
-        <target>Wyloguj się</target>
-      </trans-unit>
-      <trans-unit id="url.created_successfully">
-        <source>url.created_successfully</source>
-        <target>Adres URL został pomyślnie utworzony</target>
-      </trans-unit>
-      <trans-unit id="form.user.edit.title">
-        <source>form.user.edit.title</source>
-        <target>Edytuj użytkownika</target>
-      </trans-unit>
-      <trans-unit id="action.back_to_list">
+      <trans-unit id="Rmxwd1D" resname="action.back_to_list">
         <source>action.back_to_list</source>
         <target>Powrót do listy</target>
       </trans-unit>
-      <trans-unit id="message.form_error">
+      <trans-unit id="pNyN_Ny" resname="message.form_error">
         <source>message.form_error</source>
         <target>Formularz zawiera błędy.</target>
       </trans-unit>
-      <trans-unit id="message.url_created">
-        <source>message.url_created</source>
-        <target>Adres został skrócony pomyślnie.</target>
-      </trans-unit>
-      <trans-unit id="form.url.original_url.label">
-        <source>form.url.original_url.label</source>
-        <target>Pełny adres URL</target>
-      </trans-unit>
-      <trans-unit id="form.url.email.label">
-        <source>form.url.email.label</source>
-        <target>Adres e-mail (opcjonalnie)</target>
-      </trans-unit>
-      <trans-unit id="form.url.tags.label">
-        <source>form.url.tags.label</source>
-        <target>Tagi (opcjonalne)</target>
-      </trans-unit>
-      <trans-unit id="form.url_filter.email.label">
-        <source>form.url_filter.email.label</source>
-        <target>Email</target>
-      </trans-unit>
-      <trans-unit id="form.url_filter.original_url.label">
-        <source>form.url_filter.original_url.label</source>
-        <target>Adres URL</target>
-      </trans-unit>
-      <trans-unit id="form.url_filter.short_code.label">
-        <source>form.url_filter.short_code.label</source>
-        <target>Skrót</target>
-      </trans-unit>
-      <trans-unit id="form.url_filter.tag.label">
-        <source>form.url_filter.tag.label</source>
-        <target>Tag</target>
-      </trans-unit>
-      <trans-unit id="form.url_filter.tag.placeholder">
-        <source>form.url_filter.tag.placeholder</source>
-        <target>-- dowolny --</target>
-      </trans-unit>
-      <trans-unit id="form.tag.name.label">
-        <source>form.tag.name.label</source>
-        <target>Nazwa tagu</target>
-      </trans-unit>
-      <trans-unit id="form.admin.email.label">
-        <source>form.admin.email.label</source>
-        <target>Adres e-mail</target>
-      </trans-unit>
-      <trans-unit id="form.admin.current_password.label">
-        <source>form.admin.current_password.label</source>
-        <target>Obecne hasło</target>
-      </trans-unit>
-      <trans-unit id="form.admin.new_password.label">
-        <source>form.admin.new_password.label</source>
-        <target>Nowe hasło</target>
-      </trans-unit>
-      <trans-unit id="error.short_code_not_found">
+      <trans-unit id="cdci..T" resname="error.short_code_not_found">
         <source>error.short_code_not_found</source>
         <target>Skrót nie istnieje.</target>
       </trans-unit>
-      <trans-unit id="url.shortened.success">
+      <trans-unit id="kLAxd6l" resname="url.shortened.success">
         <source>url.shortened.success</source>
         <target>Skrócony URL został zapisany.</target>
       </trans-unit>
-      <trans-unit id="flash.url.updated">
+      <trans-unit id="ka1LqM3" resname="flash.url.updated">
         <source>flash.url.updated</source>
         <target>Adres został zaktualizowany.</target>
       </trans-unit>
-      <trans-unit id="flash.url.deleted">
+      <trans-unit id="a_4.spM" resname="flash.url.deleted">
         <source>flash.url.deleted</source>
         <target>Adres został usunięty.</target>
       </trans-unit>
-      <trans-unit id="form.url.edit_title">
+      <trans-unit id="bih1xq_" resname="form.url.edit_title">
         <source>form.url.edit_title</source>
         <target>Edycja adresu</target>
       </trans-unit>
-      <trans-unit id="flash.tag.created">
+      <trans-unit id="2wZYOz4" resname="flash.tag.created">
         <source>flash.tag.created</source>
         <target>Tag został dodany.</target>
       </trans-unit>
-      <trans-unit id="flash.tag.updated">
+      <trans-unit id="mKaRR84" resname="flash.tag.updated">
         <source>flash.tag.updated</source>
         <target>Tag został zaktualizowany.</target>
       </trans-unit>
-      <trans-unit id="flash.tag.deleted">
+      <trans-unit id="HJr0H8c" resname="flash.tag.deleted">
         <source>flash.tag.deleted</source>
         <target>Tag został usunięty.</target>
       </trans-unit>
-      <trans-unit id="form.tag.new_title">
+      <trans-unit id="7uxlrP3" resname="form.tag.new_title">
         <source>form.tag.new_title</source>
         <target>Nowy tag</target>
       </trans-unit>
-      <trans-unit id="form.tag.edit_title">
+      <trans-unit id="hcRcGXL" resname="form.tag.edit_title">
         <source>form.tag.edit_title</source>
         <target>Edycja tagu</target>
       </trans-unit>
-      <trans-unit id="flash.password.invalid">
+      <trans-unit id="pgo4ewQ" resname="flash.password.invalid">
         <source>flash.password.invalid</source>
         <target>Obecne hasło jest nieprawidłowe.</target>
       </trans-unit>
-      <trans-unit id="flash.credentials.updated">
+      <trans-unit id="gZQZsAm" resname="flash.credentials.updated">
         <source>flash.credentials.updated</source>
         <target>Dane logowania zostały zaktualizowane.</target>
       </trans-unit>
-      <trans-unit id="flash.admin.profile_updated">
+      <trans-unit id="G15aXtS" resname="flash.admin.profile_updated">
         <source>flash.admin.profile_updated</source>
         <target>Dane administratora zostały zaktualizowane.</target>
       </trans-unit>

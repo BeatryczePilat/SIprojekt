@@ -13,7 +13,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for url in urls %}
+        {% for url in pagination %}
             <tr>
                 <td>{{ url.originalUrl }}</td>
                 <td><code>{{ url.shortCode }}</code></td>
@@ -28,15 +28,7 @@
         </tbody>
     </table>
 
-    {% if pages > 1 %}
-        <nav>
-            <ul class="pagination">
-                {% for i in 1..pages %}
-                    <li class="page-item {% if i == currentPage %}active{% endif %}">
-                        <a class="page-link" href="{{ path('url_latest', {'page': i}) }}">{{ i }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </nav>
-    {% endif %}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 {% endblock %}

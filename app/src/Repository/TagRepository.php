@@ -69,7 +69,7 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Do statystyk – liczba url dla każdego tagu.
      *
-     * @return array lista tagów z liczbą powiązanych url
+     * @return array<string, int> lista tagów z liczbą powiązanych url
      */
     public function getTagsWithUrlCounts(): array
     {

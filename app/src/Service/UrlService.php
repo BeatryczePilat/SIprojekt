@@ -8,25 +8,30 @@ namespace App\Service;
 
 use App\Entity\Url;
 use App\Repository\UrlRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
+use DateTimeImmutable;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Random\RandomException;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Serwis do zarządzania adresami URL (tworzenie, edycja, wyszukiwanie, przekierowania).
  */
-class UrlService
+readonly class UrlService
 {
-    private UrlRepository $urlRepository;
-
     /**
      * Konstruktor serwisu URL.
      *
-     * @param UrlRepository $urlRepository Repozytorium URL
+     * @param UrlRepository $urlRepository
+     * @param PaginatorInterface $paginator
+     * @param RequestStack $requestStack
      */
-    public function __construct(UrlRepository $urlRepository)
-    {
-        $this->urlRepository = $urlRepository;
-    }
+    public function __construct(
+        private UrlRepository      $urlRepository,
+        private PaginatorInterface $paginator,
+        private RequestStack       $requestStack,
+    ) {}
+
 
     /**
      * Tworzy nowy skrócony URL.
@@ -42,38 +47,31 @@ class UrlService
         $url->setClicks(0);
 
         if (!$url->getCreatedAt()) {
-            $url->setCreatedAt(new \DateTimeImmutable());
+            $url->setCreatedAt(new DateTimeImmutable());
         }
 
-        $url->setUpdatedAt(new \DateTimeImmutable());
+        $url->setUpdatedAt(new DateTimeImmutable());
         $this->urlRepository->save($url);
     }
 
     /**
      * Pobiera najnowsze URL-e z paginacją.
      *
-     * @param int $page  Numer strony
-     * @param int $limit Ilość wyników na stronę
+     * @param int $page Numer strony
      *
-     * @return array ['data' => [...], 'pages' => int]
+     * @return PaginationInterface Obiekt paginacji
      */
-    public function getLatestUrlsPaginated(int $page = 1, int $limit = 10): array
+    public function getLatestUrlsPaginated(int $page): PaginationInterface
     {
         $query = $this->urlRepository->findLatestQuery();
-        $paginator = new Paginator($query);
-        $total = count($paginator);
-        $pages = ceil($total / $limit);
+        $request = $this->requestStack->getCurrentRequest();
 
-        $query
-            ->setFirstResult(($page - 1) * $limit)
-            ->setMaxResults($limit);
-
-        return [
-            'data' => $query->getResult(),
-            'pages' => $pages,
-        ];
+        return $this->paginator->paginate(
+            $query,
+            $request->query->getInt('page', $page),
+            UrlRepository::PAGINATOR_ITEMS_PER_PAGE
+        );
     }
-
     /**
      * Zwraca URL-e przypisane do tagu.
      *
@@ -89,26 +87,20 @@ class UrlService
     /**
      * Zwraca najczęściej klikane linki z paginacją.
      *
-     * @param int $page  Numer strony
-     * @param int $limit Ilość wyników na stronę
+     * @param int $page Numer strony
      *
-     * @return array ['data' => [...], 'pages' => int]
+     * @return PaginationInterface Obiekt paginacji
      */
-    public function getMostClickedPaginated(int $page = 1, int $limit = 10): array
+    public function getMostClickedPaginated(int $page): PaginationInterface
     {
         $query = $this->urlRepository->findMostClickedQuery();
-        $paginator = new Paginator($query);
-        $total = count($paginator);
-        $pages = ceil($total / $limit);
+        $request = $this->requestStack->getCurrentRequest();
 
-        $query
-            ->setFirstResult(($page - 1) * $limit)
-            ->setMaxResults($limit);
-
-        return [
-            'data' => $query->getResult(),
-            'pages' => $pages,
-        ];
+        return $this->paginator->paginate(
+            $query,
+            $request->query->getInt('page', $page),
+            UrlRepository::PAGINATOR_ITEMS_PER_PAGE
+        );
     }
 
     /**
@@ -118,7 +110,7 @@ class UrlService
      */
     public function updateUrl(Url $url): void
     {
-        $url->setUpdatedAt(new \DateTimeImmutable());
+        $url->setUpdatedAt(new DateTimeImmutable());
         $this->urlRepository->save($url);
     }
 
@@ -145,7 +137,7 @@ class UrlService
     /**
      * Zwraca URL-e dopasowane do filtrów wyszukiwania.
      *
-     * @param array $filters Dane z formularza
+     * @param array<string, mixed> $filters Dane z formularza
      *
      * @return Url[] Wyniki
      */

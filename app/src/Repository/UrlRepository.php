@@ -8,6 +8,7 @@ namespace App\Repository;
 
 use App\Entity\Url;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +18,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class UrlRepository extends ServiceEntityRepository
 {
+    const PAGINATOR_ITEMS_PER_PAGE = 10;
+
     /**
      * Konstruktor repozytorium Url.
      *
@@ -60,9 +63,9 @@ class UrlRepository extends ServiceEntityRepository
     /**
      * Zwracanie zapytania do pobierania najnowszych adresów url.
      *
-     * @return \Doctrine\ORM\Query zapytanie do pobrania danych
+     * @return Query zapytanie do pobrania danych
      */
-    public function findLatestQuery(): \Doctrine\ORM\Query
+    public function findLatestQuery(): Query
     {
         return $this->createQueryBuilder('u')
             ->orderBy('u.createdAt', 'DESC')
@@ -79,7 +82,7 @@ class UrlRepository extends ServiceEntityRepository
     public function findByTagSlug(string $slug): array
     {
         return $this->createQueryBuilder('u')
-            ->join('u.tags', 't')
+            ->join('u.tag', 't')
             ->where('t.slug = :slug')
             ->setParameter('slug', $slug)
             ->orderBy('u.createdAt', 'DESC')
@@ -90,9 +93,9 @@ class UrlRepository extends ServiceEntityRepository
     /**
      * Zwracanie zapytania do linków posortowanych po liczbie kliknięć malejąco.
      *
-     * @return \Doctrine\ORM\Query zapytanie do pobrania danych
+     * @return Query zapytanie do pobrania danych
      */
-    public function findMostClickedQuery(): \Doctrine\ORM\Query
+    public function findMostClickedQuery(): Query
     {
         return $this->createQueryBuilder('u')
             ->orderBy('u.clicks', 'DESC')
@@ -141,33 +144,33 @@ class UrlRepository extends ServiceEntityRepository
     /**
      * Zwracanie adresów url według filtrów.
      *
-     * @param array $filters ['email' => ..., 'originalUrl' => ..., 'shortCode' => ..., 'tag' => Tag|null]
+     * @param array<string, mixed> $filters
      *
      * @return Url[] lista dopasowanych adresów
      */
     public function findByFilters(array $filters): array
     {
         $qb = $this->createQueryBuilder('u')
-            ->leftJoin('u.tags', 't')
+            ->leftJoin('u.tag', 't')
             ->addSelect('t');
 
         if (!empty($filters['email'])) {
             $qb->andWhere('u.email LIKE :email')
-                ->setParameter('email', '%'.$filters['email'].'%');
+                ->setParameter('email', '%' . $filters['email'] . '%');
         }
 
         if (!empty($filters['originalUrl'])) {
             $qb->andWhere('u.originalUrl LIKE :url')
-                ->setParameter('url', '%'.$filters['originalUrl'].'%');
+                ->setParameter('url', '%' . $filters['originalUrl'] . '%');
         }
 
         if (!empty($filters['shortCode'])) {
             $qb->andWhere('u.shortCode LIKE :code')
-                ->setParameter('code', '%'.$filters['shortCode'].'%');
+                ->setParameter('code', '%' . $filters['shortCode'] . '%');
         }
 
         if (!empty($filters['tag'])) {
-            $qb->andWhere(':tag MEMBER OF u.tags')
+            $qb->andWhere('u.tag = :tag')
                 ->setParameter('tag', $filters['tag']);
         }
 
@@ -196,13 +199,13 @@ class UrlRepository extends ServiceEntityRepository
     /**
      * Zwracanie listy tagów z liczbą powiązanych url (dla statystyk).
      *
-     * @return array lista tagów z licznikami
+     * @return array<int, array{name: string, count: int}> lista tagów z licznikami
      */
     public function findAllTagsWithCounts(): array
     {
         return $this->createQueryBuilder('u')
             ->select('t.name AS name, COUNT(u.id) AS count')
-            ->join('u.tags', 't')
+            ->join('u.tag', 't')
             ->groupBy('t.id')
             ->orderBy('count', 'DESC')
             ->getQuery()
