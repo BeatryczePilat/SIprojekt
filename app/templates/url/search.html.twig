@@ -51,10 +51,13 @@
                     <td>{{ url.shortCode }}</td>
                     <td>{{ url.email }}</td>
                     <td>
-                        {% for tag in url.tag %}
-                            <span class="badge bg-secondary">{{ tag.name }}</span>
-                        {% endfor %}
+                        {% if url.tag %}
+                            <span class="badge bg-secondary">{{ url.tag.name }}</span>
+                        {% else %}
+                            <span class="text-muted">{{ 'search.no_tag'|trans }}</span>
+                        {% endif %}
                     </td>
+
                     <td>{{ url.clicks }}</td>
                 </tr>
             {% else %}

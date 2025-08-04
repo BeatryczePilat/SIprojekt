@@ -26,9 +26,11 @@
                 <td>{{ url.shortCode }}</td>
                 <td>{{ url.email ?? '-' }}</td>
                 <td>
-                    {% for tag in url.tag %}
+                    {% if url.tag %}
                         <span class="badge bg-secondary">{{ url.tag.name }}</span>
-                    {% endfor %}
+                    {% else %}
+                        <span class="text-muted">{{ 'admin.url_list.no_tag'|trans }}</span>
+                    {% endif %}
                 </td>
                 <td>{{ url.clicks }}</td>
                 <td>{{ url.createdAt ? url.createdAt|date('Y-m-d H:i') : '-' }}</td>

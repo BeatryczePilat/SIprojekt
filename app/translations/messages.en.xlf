@@ -551,6 +551,27 @@
         <source>flash.admin.profile_updated</source>
         <target>Admin credentials updated.</target>
       </trans-unit>
+      <trans-unit id="popular.header.tag">
+        <source>popular.header.tag</source>
+        <target>Tag</target>
+     </trans-unit>
+     <trans-unit id="popular.no_tag">
+        <source>popular.no_tag</source>
+        <target>none</target>
+     </trans-unit>
+     <trans-unit id="latest.tag">
+        <source>latest.tag</source>
+        <target>Tag</target>
+     </trans-unit>
+     <trans-unit id="latest.no_tag">
+        <source>latest.no_tag</source>
+        <target>none</target>
+     </trans-unit>
+     <trans-unit id="admin.url_list.no_tag">
+       <source>admin.url_list.no_tag</source>
+       <target>none</target>
+     </trans-unit>
+
     </body>
   </file>
 </xliff>

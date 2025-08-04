@@ -8,7 +8,6 @@ namespace App\Entity;
 
 use App\Entity\Enum\UserRole;
 use App\Repository\AdminRepository;
-use Deprecated;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -20,28 +19,44 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    /**
+     * ID.
+     *
+     * @var int|null int|null
+     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    /**
+     * Email.
+     *
+     * @var string|null string|null
+     */
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
     /**
-     * @var list<string> Role użytkownika
+     * Role użytkownika.
+     *
+     * @var array array
      */
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
     /**
-     * @var string|null Zaszyfrowane hasło użytkownika
+     * Zaszyfrowane hasło użytkownika.
+     *
+     * @var string|null string|null
      */
     #[ORM\Column]
     private ?string $password = null;
 
     /**
      * Pobiera identyfikator administratora.
+     *
+     * @return int|null int|null
      */
     public function getId(): ?int
     {
@@ -50,6 +65,8 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Pobiera adres email.
+     *
+     * @return string|null string|null
      */
     public function getEmail(): ?string
     {
@@ -58,6 +75,10 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Ustawia adres email.
+     *
+     * @param string $email string
+     *
+     * @return $this this
      */
     public function setEmail(string $email): static
     {
@@ -68,6 +89,8 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Pobiera identyfikator użytkownika (email).
+     *
+     * @return string string
      */
     public function getUserIdentifier(): string
     {
@@ -99,9 +122,10 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         $this->roles = $roles;
     }
 
-
     /**
      * Pobiera zaszyfrowane hasło.
+     *
+     * @return string|null string|null
      */
     public function getPassword(): ?string
     {
@@ -110,6 +134,9 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Ustawia zaszyfrowane hasło.
+     *
+     * @param string $password string $password
+     * @return $this $this
      */
     public function setPassword(string $password): static
     {
@@ -121,9 +148,8 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Usuwa dane tymczasowe (zgodnie z interfejsem UserInterface).
      *
-     * @deprecated usunięcie planowane przy aktualizacji do Symfony 8
+     * @return void void
      */
-    #[Deprecated]
     public function eraseCredentials(): void
     {
         // Do nothing

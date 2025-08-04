@@ -26,7 +26,7 @@ class AdminSecurityController extends AbstractController
      *
      * @param TranslatorInterface $translator Serwis tłumaczeń
      */
-    public function __construct(private readonly TranslatorInterface $translator)
+    public function __construct(private readonly TranslatorInterface $translator, private readonly AdminService $adminService)
     {
     }
 
@@ -39,7 +39,7 @@ class AdminSecurityController extends AbstractController
      * @return Response Odpowiedź HTML z formularzem lub przekierowaniem
      */
     #[Route('/change-password', name: 'admin_change_password')]
-    public function changePassword(Request $request, AdminService $adminService): Response
+    public function changePassword(Request $request): Response
     {
         /** @var Admin|null $user */
         $user = $this->getUser();
@@ -56,7 +56,7 @@ class AdminSecurityController extends AbstractController
             $new = $form->get('newPassword')->getData();
 
             if ($new) {
-                $success = $adminService->changePasswordWithVerification($user, $current, $new);
+                $success = $this->adminService->changePasswordWithVerification($user, $current, $new);
 
                 if (!$success) {
                     $this->addFlash('danger', $this->translator->trans('flash.password.invalid'));
@@ -67,7 +67,7 @@ class AdminSecurityController extends AbstractController
                 }
             } else {
                 // Zapis e-maila nawet jeśli hasło nie zostało zmienione
-                $adminService->saveProfile($user);
+                $this->adminService->saveProfile($user);
             }
 
             $this->addFlash('success', $this->translator->trans('flash.credentials.updated'));

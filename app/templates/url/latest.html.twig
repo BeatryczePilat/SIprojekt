@@ -10,6 +10,7 @@
             <th>{{ 'latest.short_code'|trans }}</th>
             <th>{{ 'latest.created_at'|trans }}</th>
             <th>{{ 'latest.clicks'|trans }}</th>
+            <th>{{ 'latest.tag'|trans }}</th>
         </tr>
         </thead>
         <tbody>
@@ -19,10 +20,17 @@
                 <td><code>{{ url.shortCode }}</code></td>
                 <td>{{ url.createdAt|date('Y-m-d H:i') }}</td>
                 <td>{{ url.clicks }}</td>
+                <td>
+                    {% if url.tag %}
+                        <span class="badge bg-secondary">{{ url.tag.name }}</span>
+                    {% else %}
+                        <span class="text-muted">{{ 'latest.no_tag'|trans }}</span>
+                    {% endif %}
+                </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">{{ 'latest.no_data'|trans }}</td>
+                <td colspan="5">{{ 'latest.no_data'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>

@@ -9,6 +9,7 @@
             <th>{{ 'popular.header.short'|trans }}</th>
             <th>{{ 'popular.header.url'|trans }}</th>
             <th>{{ 'popular.header.clicks'|trans }}</th>
+            <th>{{ 'popular.header.tag'|trans }}</th>
             <th>{{ 'popular.header.date'|trans }}</th>
         </tr>
         </thead>
@@ -22,6 +23,13 @@
                     : url.originalUrl }}
                 </td>
                 <td>{{ url.clicks }}</td>
+                <td>
+                    {% if url.tag %}
+                        <span class="badge bg-secondary">{{ url.tag.name }}</span>
+                    {% else %}
+                        <span class="text-muted">{{ 'popular.no_tag'|trans }}</span>
+                    {% endif %}
+                </td>
                 <td>{{ url.createdAt|date('Y-m-d H:i') }}</td>
             </tr>
         {% else %}
