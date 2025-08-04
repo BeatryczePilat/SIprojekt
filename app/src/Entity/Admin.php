@@ -136,6 +136,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
      * Ustawia zaszyfrowane hasło.
      *
      * @param string $password string $password
+     *
      * @return $this $this
      */
     public function setPassword(string $password): static
@@ -144,7 +145,37 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    /**
+     * Nickname (pseudonim) administratora.
+     *
+     * @var string|null string|null
+     */
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $nickname = null;
 
+    /**
+     * Zwraca pseudonim administratora.
+     *
+     * @return string|null string|null
+     */
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    /**
+     * Ustawia pseudonim administratora.
+     *
+     * @param string|null $nickname string|null $nickname
+     *
+     * @return static
+     */
+    public function setNickname(?string $nickname): static
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
     /**
      * Usuwa dane tymczasowe (zgodnie z interfejsem UserInterface).
      *

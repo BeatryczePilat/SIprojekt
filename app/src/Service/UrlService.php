@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Url Service.
+ * Serwis UrlService.
  */
 
 namespace App\Service;
@@ -10,35 +10,32 @@ use App\Entity\Url;
 use App\Repository\UrlRepository;
 use DateTimeImmutable;
 use Knp\Component\Pager\Pagination\PaginationInterface;
-use Random\RandomException;
 use Knp\Component\Pager\PaginatorInterface;
+use Random\RandomException;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * Serwis do zarządzania adresami URL (tworzenie, edycja, wyszukiwanie, przekierowania).
+ * Serwis do zarządzania skracanymi URL-ami.
  */
 readonly class UrlService
 {
     /**
-     * Konstruktor serwisu URL.
+     * Konstruktor – wstrzykiwanie zależności (DI).
      *
-     * @param UrlRepository $urlRepository
-     * @param PaginatorInterface $paginator
-     * @param RequestStack $requestStack
+     * @param UrlRepository      $urlRepository Repozytorium encji URL
+     * @param PaginatorInterface $paginator     Komponent paginacji KNP
+     * @param RequestStack       $requestStack  Stos żądań HTTP
      */
-    public function __construct(
-        private UrlRepository      $urlRepository,
-        private PaginatorInterface $paginator,
-        private RequestStack       $requestStack,
-    ) {}
-
+    public function __construct(private UrlRepository $urlRepository, private PaginatorInterface $paginator, private RequestStack $requestStack)
+    {
+    }
 
     /**
-     * Tworzy nowy skrócony URL.
+     * Tworzy nowy skrócony adres URL.
      *
-     * @param Url $url Encja z formularza
+     * @param Url $url Nowa encja URL
      *
-     * @throws RandomException
+     * @throws RandomException Gdy nie uda się wygenerować kodu
      */
     public function createShortUrl(Url $url): void
     {
@@ -51,15 +48,16 @@ readonly class UrlService
         }
 
         $url->setUpdatedAt(new DateTimeImmutable());
+
         $this->urlRepository->save($url);
     }
 
     /**
-     * Pobiera najnowsze URL-e z paginacją.
+     * Zwraca najnowsze URL-e z paginacją.
      *
      * @param int $page Numer strony
      *
-     * @return PaginationInterface Obiekt paginacji
+     * @return PaginationInterface Wyniki z paginacją
      */
     public function getLatestUrlsPaginated(int $page): PaginationInterface
     {
@@ -72,12 +70,13 @@ readonly class UrlService
             UrlRepository::PAGINATOR_ITEMS_PER_PAGE
         );
     }
+
     /**
-     * Zwraca URL-e przypisane do tagu.
+     * Zwraca URL-e przypisane do podanego sluga tagu.
      *
      * @param string $slug Slug tagu
      *
-     * @return Url[] Lista URL-i
+     * @return Url[] Lista dopasowanych URL-i
      */
     public function getUrlsByTagSlug(string $slug): array
     {
@@ -85,11 +84,11 @@ readonly class UrlService
     }
 
     /**
-     * Zwraca najczęściej klikane linki z paginacją.
+     * Zwraca najczęściej klikane URL-e z paginacją.
      *
      * @param int $page Numer strony
      *
-     * @return PaginationInterface Obiekt paginacji
+     * @return PaginationInterface Wyniki z paginacją
      */
     public function getMostClickedPaginated(int $page): PaginationInterface
     {
@@ -106,7 +105,7 @@ readonly class UrlService
     /**
      * Aktualizuje istniejący URL.
      *
-     * @param Url $url Encja po edycji
+     * @param Url $url Encja do zapisania
      */
     public function updateUrl(Url $url): void
     {
@@ -115,7 +114,7 @@ readonly class UrlService
     }
 
     /**
-     * Usuwa URL.
+     * Usuwa podany URL.
      *
      * @param Url $url Encja do usunięcia
      */
@@ -125,7 +124,7 @@ readonly class UrlService
     }
 
     /**
-     * Zwraca wszystkie URL-e posortowane malejąco po dacie.
+     * Zwraca wszystkie URL-e, posortowane malejąco po dacie utworzenia.
      *
      * @return Url[] Lista URL-i
      */
@@ -135,11 +134,11 @@ readonly class UrlService
     }
 
     /**
-     * Zwraca URL-e dopasowane do filtrów wyszukiwania.
+     * Przeszukuje URL-e według podanych filtrów.
      *
-     * @param array<string, mixed> $filters Dane z formularza
+     * @param array<string, mixed> $filters Dane z formularza wyszukiwania
      *
-     * @return Url[] Wyniki
+     * @return Url[] Lista pasujących adresów URL
      */
     public function searchUrls(array $filters): array
     {
@@ -147,11 +146,11 @@ readonly class UrlService
     }
 
     /**
-     * Obsługuje przekierowanie oraz zlicza kliknięcia.
+     * Obsługuje przekierowanie i inkrementuje licznik kliknięć.
      *
-     * @param string $shortCode Skrócony kod
+     * @param string $shortCode Skrócony kod URL
      *
-     * @return Url|null URL jeśli znaleziony, null w przeciwnym razie
+     * @return Url|null Url|null
      */
     public function handleRedirect(string $shortCode): ?Url
     {

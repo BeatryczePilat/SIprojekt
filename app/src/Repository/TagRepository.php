@@ -24,10 +24,10 @@ class TagRepository extends ServiceEntityRepository
     }
 
     /**
-     * Zapis tagu do bazy.
+     * Zapisuje tag do bazy danych.
      *
-     * @param Tag  $entity tag do zapisania
-     * @param bool $flush  czy natychmiast zapisać
+     * @param Tag  $entity Obiekt tagu do zapisania
+     * @param bool $flush  Czy natychmiast wykonać flush (domyślnie true)
      */
     public function save(Tag $entity, bool $flush = true): void
     {
@@ -39,10 +39,10 @@ class TagRepository extends ServiceEntityRepository
     }
 
     /**
-     * Usuwanie tagu z bazy.
+     * Usuwa tag z bazy danych.
      *
-     * @param Tag  $entity tag do usunięcia
-     * @param bool $flush  czy natychmiast usunąć
+     * @param Tag  $entity Obiekt tagu do usunięcia
+     * @param bool $flush  Czy natychmiast wykonać flush (domyślnie true)
      */
     public function remove(Tag $entity, bool $flush = true): void
     {
@@ -54,9 +54,9 @@ class TagRepository extends ServiceEntityRepository
     }
 
     /**
-     * Zwracanie liczby wszystkich tagów.
+     * Zwraca łączną liczbę tagów w bazie.
      *
-     * @return int liczba tagów
+     * @return int Liczba rekordów w tabeli tag
      */
     public function countAll(): int
     {
@@ -67,9 +67,11 @@ class TagRepository extends ServiceEntityRepository
     }
 
     /**
-     * Do statystyk – liczba url dla każdego tagu.
+     * Zwraca liczbę powiązanych URL-i dla każdego tagu.
      *
-     * @return array<string, int> lista tagów z liczbą powiązanych url
+     * Przydatne do statystyk, raportów lub dashboardów.
+     *
+     * @return array<int, array{name: string, count: int}> Lista tagów z nazwą i liczbą powiązanych URL-i
      */
     public function getTagsWithUrlCounts(): array
     {

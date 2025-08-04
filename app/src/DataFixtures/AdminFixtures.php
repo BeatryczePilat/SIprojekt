@@ -34,10 +34,14 @@ class AdminFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
+        // Inicjalizacja generatora Faker
+        $faker = \Faker\Factory::create();
+
         $admin = new Admin();
         $admin->setEmail('admin@example.com');
         $admin->setPassword($this->passwordHasher->hashPassword($admin, 'admin123'));
         $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setNickname($faker->userName());
 
         $manager->persist($admin);
         $manager->flush();

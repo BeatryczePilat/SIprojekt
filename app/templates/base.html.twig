@@ -145,17 +145,27 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ path('admin_dashboard') }}">{{ 'navbar.admin_panel'|trans }}</a>
+                                <a class="dropdown-item disabled">
+                                    👤 {{ app.user.nickname ?? app.user.email }}
+                                </a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ path('admin_dashboard') }}">{{ 'navbar.admin_panel'|trans }}</a>
+                            </li>
                             <li>
                                 <a class="dropdown-item" href="{{ path('admin_url_index') }}">{{ 'navbar.manage_urls'|trans }}</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ path('admin_tag_index') }}">{{ 'navbar.manage_tags'|trans }}</a>
                             </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ path('app_logout') }}">{{ 'navbar.logout'|trans }}</a>
+                            </li>
                         </ul>
                     </li>
+
                 {% endif %}
 
                 {% if app.user %}

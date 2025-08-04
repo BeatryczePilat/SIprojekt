@@ -11,62 +11,61 @@ use App\Repository\AdminRepository;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
- * Serwis do obsługi logiki biznesowej administratora, w tym aktualizacji danych i haseł.
+ * Serwis do obsługi logiki biznesowej administratora,
+ * w tym zarządzania profilem oraz zmianą hasła.
  */
 class AdminService
 {
-    private AdminRepository $adminRepository;
-    private UserPasswordHasherInterface $passwordHasher;
-
     /**
-     * @param AdminRepository             $adminRepository repozytorium
-     *                                                     administratorów
-     * @param UserPasswordHasherInterface $passwordHasher  hasher do obsługi
-     *                                                     haseł
+     * Konstruktor z wstrzykiwaniem zależności (DI).
+     *
+     * @param AdminRepository             $adminRepository Repozytorium administratorów
+     * @param UserPasswordHasherInterface $passwordHasher  Serwis do haszowania haseł
      */
-    public function __construct(AdminRepository $adminRepository, UserPasswordHasherInterface $passwordHasher)
+    public function __construct(private readonly AdminRepository $adminRepository, private readonly UserPasswordHasherInterface $passwordHasher)
     {
-        $this->adminRepository = $adminRepository;
-        $this->passwordHasher = $passwordHasher;
     }
 
     /**
-     * Aktualizacja danych administratora (email i opcjonalnie hasło).
+     * Aktualizuje dane administratora, opcjonalnie zmieniając hasło.
      *
-     * @param Admin       $admin         admin do aktualizacji
-     * @param string|null $plainPassword nowe hasło lub null
+     * @param Admin       $admin         Obiekt administratora
+     * @param string|null $plainPassword Nowe hasło (jeśli podane)
      */
     public function updateProfile(Admin $admin, ?string $plainPassword = null): void
     {
         if ($plainPassword) {
-            $hashedPassword = $this->passwordHasher->hashPassword($admin, $plainPassword);
-            $admin->setPassword($hashedPassword);
+            $admin->setPassword(
+                $this->passwordHasher->hashPassword($admin, $plainPassword)
+            );
         }
 
         $this->adminRepository->save($admin);
     }
 
     /**
-     * Zmiana hasła bez zmiany pozostałych danych.
+     * Zmienia hasło administratora (bez weryfikacji aktualnego).
      *
-     * @param Admin  $admin            admin, którego hasło ma zostać zmienione
-     * @param string $newPlainPassword nowe hasło w postaci jawnej
+     * @param Admin  $admin            Administrator
+     * @param string $newPlainPassword Nowe hasło
      */
     public function changePassword(Admin $admin, string $newPlainPassword): void
     {
-        $hashedPassword = $this->passwordHasher->hashPassword($admin, $newPlainPassword);
-        $admin->setPassword($hashedPassword);
+        $admin->setPassword(
+            $this->passwordHasher->hashPassword($admin, $newPlainPassword)
+        );
+
         $this->adminRepository->save($admin);
     }
 
     /**
-     * Zmiana hasła z weryfikacją obecnego hasła.
+     * Zmienia hasło po sprawdzeniu poprawności obecnego hasła.
      *
-     * @param Admin  $admin                admin, którego hasło ma zostać zmienione
-     * @param string $currentPlainPassword obecne hasło w postaci jawnej
-     * @param string $newPlainPassword     nowe hasło w postaci jawnej
+     * @param Admin  $admin                Administrator
+     * @param string $currentPlainPassword Obecne hasło (do weryfikacji)
+     * @param string $newPlainPassword     Nowe hasło
      *
-     * @return bool true jeśli hasło zmienione, false jeśli obecne hasło nieprawidłowe
+     * @return bool True jeśli zmiana udana, false jeśli hasło niepoprawne
      */
     public function changePasswordWithVerification(Admin $admin, string $currentPlainPassword, string $newPlainPassword): bool
     {
@@ -78,21 +77,23 @@ class AdminService
             return false;
         }
 
-        $hashedPassword = $this->passwordHasher->hashPassword($admin, $newPlainPassword);
-        $admin->setPassword($hashedPassword);
+        $admin->setPassword(
+            $this->passwordHasher->hashPassword($admin, $newPlainPassword)
+        );
+
         $this->adminRepository->save($admin);
 
         return true;
     }
 
     /**
-     * Aktualizacja profilu z weryfikacją hasła, jeśli podano nowe.
+     * Aktualizuje profil z opcjonalną zmianą hasła po weryfikacji.
      *
-     * @param Admin       $admin           obiekt administratora
-     * @param string|null $currentPassword obecne hasło (do weryfikacji)
-     * @param string|null $newPassword     nowe hasło lub null
+     * @param Admin       $admin           Administrator
+     * @param string|null $currentPassword Obecne hasło
+     * @param string|null $newPassword     Nowe hasło
      *
-     * @return bool true jeśli zapis zakończony, false jeśli hasło nieprawidłowe
+     * @return bool True jeśli zmieniono, false jeśli hasło niepoprawne
      */
     public function updateProfileWithPasswordVerification(Admin $admin, ?string $currentPassword, ?string $newPassword): bool
     {
@@ -101,8 +102,9 @@ class AdminService
                 return false;
             }
 
-            $hashedPassword = $this->passwordHasher->hashPassword($admin, $newPassword);
-            $admin->setPassword($hashedPassword);
+            $admin->setPassword(
+                $this->passwordHasher->hashPassword($admin, $newPassword)
+            );
         }
 
         $this->adminRepository->save($admin);
@@ -111,9 +113,9 @@ class AdminService
     }
 
     /**
-     * Zapis profilu administratora bez zmiany hasła (np. zmiana e-mail).
+     * Zapisuje zmiany profilu bez zmiany hasła.
      *
-     * @param Admin $admin obiekt z nowym e‑mailem
+     * @param Admin $admin Admin $admin
      */
     public function saveProfile(Admin $admin): void
     {

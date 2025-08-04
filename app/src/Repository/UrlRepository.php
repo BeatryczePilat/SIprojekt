@@ -34,7 +34,7 @@ class UrlRepository extends ServiceEntityRepository
      * Zapis lub aktualizacja encji w bazie danych.
      *
      * @param Url  $entity url do zapisania
-     * @param bool $flush  czy natychmiast wykonać zapis
+     * @param bool $flush  Czy natychmiast wykonać zapis
      */
     public function save(Url $entity, bool $flush = true): void
     {
@@ -49,7 +49,7 @@ class UrlRepository extends ServiceEntityRepository
      * Usuwanie encji z bazy danych.
      *
      * @param Url  $entity url do usunięcia
-     * @param bool $flush  czy natychmiast wykonać operację
+     * @param bool $flush  Czy natychmiast wykonać operację
      */
     public function remove(Url $entity, bool $flush = true): void
     {
@@ -63,7 +63,7 @@ class UrlRepository extends ServiceEntityRepository
     /**
      * Zwracanie zapytania do pobierania najnowszych adresów url.
      *
-     * @return Query zapytanie do pobrania danych
+     * @return Query Zapytanie do pobrania danych
      */
     public function findLatestQuery(): Query
     {
@@ -93,7 +93,7 @@ class UrlRepository extends ServiceEntityRepository
     /**
      * Zwracanie zapytania do linków posortowanych po liczbie kliknięć malejąco.
      *
-     * @return Query zapytanie do pobrania danych
+     * @return Query Zapytanie do pobrania danych
      */
     public function findMostClickedQuery(): Query
     {
@@ -156,17 +156,17 @@ class UrlRepository extends ServiceEntityRepository
 
         if (!empty($filters['email'])) {
             $qb->andWhere('u.email LIKE :email')
-                ->setParameter('email', '%' . $filters['email'] . '%');
+                ->setParameter('email', '%'.$filters['email'].'%');
         }
 
         if (!empty($filters['originalUrl'])) {
             $qb->andWhere('u.originalUrl LIKE :url')
-                ->setParameter('url', '%' . $filters['originalUrl'] . '%');
+                ->setParameter('url', '%'.$filters['originalUrl'].'%');
         }
 
         if (!empty($filters['shortCode'])) {
             $qb->andWhere('u.shortCode LIKE :code')
-                ->setParameter('code', '%' . $filters['shortCode'] . '%');
+                ->setParameter('code', '%'.$filters['shortCode'].'%');
         }
 
         if (!empty($filters['tag'])) {

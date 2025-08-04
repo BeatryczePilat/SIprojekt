@@ -6,6 +6,7 @@
 
 namespace App\Controller;
 
+use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -17,24 +18,25 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * Wyświetla formularz logowania i przetwarza ewentualne błędy logowania.
+     * Konstruktor kontrolera.
      *
-     * @param AuthenticationUtils $authenticationUtils Narzędzie do obsługi procesu logowania
+     * @param AuthenticationUtils $authUtils $authUtils
+     */
+    public function __construct(private readonly AuthenticationUtils $authUtils)
+    {
+    }
+
+    /**
+     * Wyświetla formularz logowania oraz ewentualne błędy logowania.
      *
-     * @return Response Odpowiedź HTML z formularzem logowania
+     * @return Response Response
      */
     #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(): Response
     {
-        // Pobiera ewentualny błąd logowania
-        $error = $authenticationUtils->getLastAuthenticationError();
-
-        // Pobiera ostatnio wpisaną nazwę użytkownika
-        $lastUsername = $authenticationUtils->getLastUsername();
-
         return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
+            'last_username' => $this->authUtils->getLastUsername(),
+            'error' => $this->authUtils->getLastAuthenticationError(),
         ]);
     }
 
@@ -42,11 +44,11 @@ class SecurityController extends AbstractController
      * Punkt wejścia do wylogowania użytkownika.
      * Ta metoda jest przechwytywana przez mechanizm firewall Symfony.
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {
-        throw new \LogicException('This method is intercepted by the logout key in your firewall configuration.');
+        throw new LogicException('This method is intercepted by the logout key in your firewall configuration.');
     }
 }

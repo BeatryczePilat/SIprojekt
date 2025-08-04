@@ -92,6 +92,7 @@ class Tag
      * Ustawia slug tagu.
      *
      * @param string $slug string $slug
+     *
      * @return $this $this
      */
     public function setSlug(string $slug): static

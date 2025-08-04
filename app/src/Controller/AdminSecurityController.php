@@ -24,7 +24,10 @@ class AdminSecurityController extends AbstractController
     /**
      * Konstruktor kontrolera.
      *
-     * @param TranslatorInterface $translator Serwis tłumaczeń
+     * @param TranslatorInterface $translator   Serwis
+     *                                          tłumaczeń
+     * @param AdminService        $adminService Serwis zarządzający
+     *                                          adminem
      */
     public function __construct(private readonly TranslatorInterface $translator, private readonly AdminService $adminService)
     {
@@ -33,8 +36,7 @@ class AdminSecurityController extends AbstractController
     /**
      * Edycja danych administratora (e-mail i opcjonalnie hasło).
      *
-     * @param Request      $request      Obiekt żądania HTTP
-     * @param AdminService $adminService Serwis do obsługi administratora
+     * @param Request $request Request $request
      *
      * @return Response Odpowiedź HTML z formularzem lub przekierowaniem
      */
@@ -66,7 +68,7 @@ class AdminSecurityController extends AbstractController
                     ]);
                 }
             } else {
-                // Zapis e-maila nawet jeśli hasło nie zostało zmienione
+                // Zapis tylko adresu e-mail
                 $this->adminService->saveProfile($user);
             }
 

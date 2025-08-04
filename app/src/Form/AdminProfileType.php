@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * Formularz do edycji profilu administratora.
@@ -30,6 +31,13 @@ class AdminProfileType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'form.admin.email.label',
                 'required' => true,
+            ])
+            ->add('nickname', TextType::class, [
+                    'label' => 'admin.login_data.nickname',
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'form-control',
+                    ],
             ])
             ->add('currentPassword', PasswordType::class, [
                 'label' => 'form.admin.current_password.label',

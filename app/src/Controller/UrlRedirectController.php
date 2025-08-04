@@ -17,33 +17,32 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class UrlRedirectController extends AbstractController
 {
-    private TranslatorInterface $translator;
-
     /**
      * Konstruktor kontrolera przekierowań URL.
      *
-     * @param TranslatorInterface $translator Tłumacz Symfony
+     * @param TranslatorInterface $translator TranslatorInterface $translator
+     * @param UrlService          $urlService Serwis do obsługi URL-i
      */
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(private readonly TranslatorInterface $translator, private readonly UrlService $urlService)
     {
-        $this->translator = $translator;
     }
 
     /**
      * Przekierowuje użytkownika do oryginalnego adresu URL na podstawie skróconego kodu.
      *
-     * @param string     $shortCode  skrócony kod adresu
-     * @param UrlService $urlService serwis do obsługi url
+     * @param string $shortCode Skrócony kod adresu
      *
-     * @return Response przekierowanie do oryginalnego adresu lub błąd 404
+     * @return Response Przekierowanie do oryginalnego adresu/błąd 404
      */
     #[Route('/s/{shortCode}', name: 'url_redirect')]
-    public function handleRedirect(string $shortCode, UrlService $urlService): Response
+    public function handleRedirect(string $shortCode): Response
     {
-        $url = $urlService->handleRedirect($shortCode);
+        $url = $this->urlService->handleRedirect($shortCode);
 
         if (!$url) {
-            throw $this->createNotFoundException($this->translator->trans('error.short_code_not_found'));
+            throw $this->createNotFoundException(
+                $this->translator->trans('error.short_code_not_found')
+            );
         }
 
         return $this->redirect($url->getOriginalUrl());

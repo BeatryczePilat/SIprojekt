@@ -14,6 +14,8 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 
 /**
+ * Klasa repozytorium dla encji Admin.
+ *
  * @extends ServiceEntityRepository<Admin>
  */
 class AdminRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
@@ -21,7 +23,7 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
     /**
      * Konstruktor repozytorium Admin.
      *
-     * @param ManagerRegistry $registry Rejestr menedżerów Doctrine
+     * @param ManagerRegistry $registry Rejestr zarządzający encjami
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -29,10 +31,12 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
     }
 
     /**
-     * Automatyczna obsługa aktualizacji (rehash) hasła użytkownika.
+     * Automatyczna aktualizacja (rehash) hasła – wywoływana np. przez listener hasła Symfony.
      *
-     * @param PasswordAuthenticatedUserInterface $user              użytkownik, którego hasło ma być zaktualizowane
-     * @param string                             $newHashedPassword nowe, zahashowane hasło
+     * @param PasswordAuthenticatedUserInterface $user              Użytkownik, którego hasło trzeba zaktualizować
+     * @param string                             $newHashedPassword Nowe, zaszyfrowane hasło
+     *
+     * @throws UnsupportedUserException Jeśli użytkownik nie jest typu Admin
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
@@ -46,10 +50,10 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
     }
 
     /**
-     * Zapis encji admin do bazy.
+     * Zapisuje encję administratora w bazie danych.
      *
-     * @param Admin $entity obiekt do zapisania
-     * @param bool  $flush  czy natychmiast wykonać flush
+     * @param Admin $entity Obiekt Admin do zapisania
+     * @param bool  $flush  Czy natychmiast wykonać flush (domyślnie: true)
      */
     public function save(Admin $entity, bool $flush = true): void
     {

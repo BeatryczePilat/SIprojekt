@@ -505,6 +505,15 @@
         <source>admin.url_list.no_tag</source>
         <target>brak</target>
       </trans-unit>
+      <trans-unit id="admin.login_data.nickname">
+        <source>admin.login_data.nickname</source>
+        <target>Pseudonim</target>
+      </trans-unit>
+      <trans-unit id="search.no_tag">
+          <source>search.no_tag</source>
+          <target>Brak przypisanego tagu</target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>

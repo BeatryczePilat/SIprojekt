@@ -26,6 +26,7 @@ class UrlFixtures extends Fixture
      * Ładuje dane fikcyjne dla encji Url.
      *
      * @param ObjectManager $manager Menedżer encji Doctrine.
+     *
      * @throws DateMalformedStringException
      * @throws RandomException
      */
@@ -41,7 +42,7 @@ class UrlFixtures extends Fixture
             $url->setShortCode(substr(md5(uniqid()), 0, 6));
             $url->setEmail($faker->email());
             $url->setClicks(random_int(0, 100));
-            $url->setCreatedAt(new DateTimeImmutable('-' . random_int(0, 30) . ' days'));
+            $url->setCreatedAt(new DateTimeImmutable('-'.random_int(0, 30).' days'));
 
             // Przypisanie losowego taga, jeśli dostępne
             if ($tags) {

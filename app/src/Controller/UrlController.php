@@ -26,33 +26,35 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class UrlController extends AbstractController
 {
     /**
-     * Konstruktor kontrolera URL.
+     * Konstruktor kontrolera.
      *
-     * @param TranslatorInterface $translator Tłumacz Symfony
+     * @param TranslatorInterface $translator    Serwis
+     * @param UrlService          $urlService    Serwis do obsługi
+     *                                           adresów
+     * @param StatService         $statService   Serwis statystyk
+     * @param UrlRepository       $urlRepository Repozytorium URL-i
      */
-    public function __construct(private readonly TranslatorInterface $translator)
+    public function __construct(private readonly TranslatorInterface $translator, private readonly UrlService $urlService, private readonly StatService $statService, private readonly UrlRepository $urlRepository)
     {
     }
-
     /**
-     * Obsługa skracania adresu URL.
+     * Obsługuje skracanie adresu URL.
      *
-     * @param Request    $request    Obiekt żądania HTTP
-     * @param UrlService $urlService Serwis do obsługi URL
+     * @param Request $request $request
      *
-     * @return Response Odpowiedź HTML z formularzem lub skróconym adresem
+     * @return Response Odpowiedź z formularzem lub skróconym adresem
      *
      * @throws RandomException
      */
     #[Route('/shorten', name: 'url_shorten')]
-    public function shorten(Request $request, UrlService $urlService): Response
+    public function shorten(Request $request): Response
     {
         $url = new Url();
         $form = $this->createForm(UrlType::class, $url);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $urlService->createShortUrl($url);
+            $this->urlService->createShortUrl($url);
 
             $this->addFlash('success', $this->translator->trans('url.shortened.success'));
 
@@ -72,17 +74,16 @@ class UrlController extends AbstractController
     }
 
     /**
-     * Wyświetla najnowsze adresy URL (paginacja).
+     * Wyświetla najnowsze URL-e (z paginacją).
      *
-     * @param Request $request
-     * @param UrlService $urlService Serwis do obsługi URL
+     * @param Request $request $request
      *
-     * @return Response Odpowiedź HTML z listą adresów
+     * @return Response Odpowiedź z listą adresów
      */
     #[Route('/latest', name: 'url_latest')]
-    public function latest(Request $request, UrlService $urlService): Response
+    public function latest(Request $request): Response
     {
-        $pagination = $urlService->getLatestUrlsPaginated(
+        $pagination = $this->urlService->getLatestUrlsPaginated(
             $request->query->getInt('page', 1)
         );
 
@@ -90,19 +91,17 @@ class UrlController extends AbstractController
             'pagination' => $pagination,
         ]);
     }
-
     /**
-     * Wyświetla adresy URL powiązane z danym tagiem.
+     * Wyświetla adresy URL przypisane do danego tagu.
      *
-     * @param string     $slug       Identyfikator tagu
-     * @param UrlService $urlService Serwis do obsługi URL
+     * @param string $slug string $slug
      *
-     * @return Response Odpowiedź HTML z listą adresów
+     * @return Response Odpowiedź z listą adresów
      */
     #[Route('/tag/{slug}', name: 'url_by_tag')]
-    public function byTag(string $slug, UrlService $urlService): Response
+    public function byTag(string $slug): Response
     {
-        $urls = $urlService->getUrlsByTagSlug($slug);
+        $urls = $this->urlService->getUrlsByTagSlug($slug);
 
         return $this->render('url/by_tag.html.twig', [
             'urls' => $urls,
@@ -111,17 +110,16 @@ class UrlController extends AbstractController
     }
 
     /**
-     * Wyświetla najpopularniejsze adresy URL (paginacja).
+     * Wyświetla najpopularniejsze URL-e (z paginacją).
      *
-     * @param Request $request Obiekt żądania HTTP
-     * @param UrlService $urlService Serwis do obsługi URL
+     * @param Request $request $request
      *
-     * @return Response Odpowiedź HTML z listą adresów
+     * @return Response Odpowiedź z listą adresów
      */
     #[Route('/popular', name: 'url_popular')]
-    public function popular(Request $request, UrlService $urlService): Response
+    public function popular(Request $request): Response
     {
-        $pagination = $urlService->getMostClickedPaginated(
+        $pagination = $this->urlService->getMostClickedPaginated(
             $request->query->getInt('page', 1)
         );
 
@@ -131,35 +129,31 @@ class UrlController extends AbstractController
     }
 
     /**
-     * Wyświetla statystyki i zestawienia URL.
+     * Wyświetla statystyki i zestawienia URL-i.
      *
-     * @param StatService   $statService   Serwis do generowania statystyk
-     * @param UrlRepository $urlRepository Repozytorium adresów URL
-     *
-     * @return Response Odpowiedź HTML ze statystykami
+     * @return Response Odpowiedź ze statystykami
      */
     #[Route('/stats', name: 'url_stats')]
-    public function stats(StatService $statService, UrlRepository $urlRepository): Response
+    public function stats(): Response
     {
         return $this->render('url/stats.html.twig', [
-            'stats' => $statService->getStats(),
-            'recentUrls' => $urlRepository->findBy([], ['createdAt' => 'DESC'], 5),
-            'topClickedUrls' => $urlRepository->findBy([], ['clicks' => 'DESC'], 5),
-            'uniqueEmails' => $urlRepository->findUniqueEmails(),
-            'tags' => $urlRepository->findAllTagsWithCounts(),
+            'stats' => $this->statService->getStats(),
+            'recentUrls' => $this->urlRepository->findBy([], ['createdAt' => 'DESC'], 5),
+            'topClickedUrls' => $this->urlRepository->findBy([], ['clicks' => 'DESC'], 5),
+            'uniqueEmails' => $this->urlRepository->findUniqueEmails(),
+            'tags' => $this->urlRepository->findAllTagsWithCounts(),
         ]);
     }
 
     /**
-     * Obsługa wyszukiwania adresów URL.
+     * Obsługuje wyszukiwanie adresów URL.
      *
-     * @param Request    $request    Obiekt żądania HTTP
-     * @param UrlService $urlService Serwis do obsługi URL
+     * @param Request $request $request
      *
-     * @return Response Odpowiedź HTML z wynikami wyszukiwania
+     * @return Response Odpowiedź z wynikami
      */
     #[Route('/search', name: 'url_search')]
-    public function search(Request $request, UrlService $urlService): Response
+    public function search(Request $request): Response
     {
         $form = $this->createForm(UrlFilterType::class);
         $form->handleRequest($request);
@@ -167,7 +161,7 @@ class UrlController extends AbstractController
         $urls = [];
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $urls = $urlService->searchUrls($form->getData());
+            $urls = $this->urlService->searchUrls($form->getData());
         }
 
         return $this->render('url/search.html.twig', [

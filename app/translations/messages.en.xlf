@@ -571,6 +571,26 @@
        <source>admin.url_list.no_tag</source>
        <target>none</target>
      </trans-unit>
+     <trans-unit id="admin.login_data.nickname">
+       <source>admin.login_data.nickname</source>
+       <target>Nickname</target>
+     </trans-unit>
+     <trans-unit id="admin.url_list.tag">
+         <source>admin.url_list.tag</source>
+         <target>Tag</target>
+     </trans-unit>
+     <trans-unit id="edit_url.tag">
+         <source>edit_url.tag</source>
+         <target>Tag</target>
+     </trans-unit>
+     <trans-unit id="search.table.tag">
+         <source>search.table.tag</source>
+         <target>Tag</target>
+     </trans-unit>
+     <trans-unit id="search.no_tag">
+         <source>search.no_tag</source>
+         <target>No tag assigned</target>
+     </trans-unit>
 
     </body>
   </file>

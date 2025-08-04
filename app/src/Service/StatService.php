@@ -10,22 +10,28 @@ use App\Repository\TagRepository;
 use App\Repository\UrlRepository;
 
 /**
- * Serwis do generowania podstawowych statystyk aplikacji.
+ * Klasa serwisowa do generowania statystyk aplikacji.
  */
 readonly class StatService
 {
     /**
-     * @param UrlRepository $urlRepository repozytorium adresów URL
-     * @param TagRepository $tagRepository repozytorium tagów
+     * Konstruktor z wstrzyknięciem zależności.
+     *
+     * @param UrlRepository $urlRepository Repozytorium adresów URL
+     * @param TagRepository $tagRepository Repozytorium tagów
      */
     public function __construct(private UrlRepository $urlRepository, private TagRepository $tagRepository)
     {
     }
 
     /**
-     * Zwraca zestaw podstawowych statystyk.
+     * Zwraca podstawowe statystyki aplikacji.
      *
-     * @return array<string, int> tablica danych statystycznych
+     * @return array<string, int> Tablica ze statystykami:
+     *                             - totalUrls: liczba wszystkich URL
+     *                             - totalClicks: suma kliknięć
+     *                             - uniqueEmails: liczba unikalnych emaili
+     *                             - totalTags: liczba tagów
      */
     public function getStats(): array
     {

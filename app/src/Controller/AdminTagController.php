@@ -22,44 +22,44 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class AdminTagController extends AbstractController
 {
     /**
+     * Konstruktor kontrolera.
+     *
      * @param TranslatorInterface $translator Serwis tłumaczeń
+     * @param TagService          $tagService Serwis do operacji na tagach
      */
-    public function __construct(private TranslatorInterface $translator)
+    public function __construct(private readonly TranslatorInterface $translator, private readonly TagService $tagService)
     {
     }
 
     /**
      * Wyświetlanie listy wszystkich tagów.
      *
-     * @param TagService $tagService Serwis odpowiedzialny za operacje na tagach
-     *
      * @return Response Odpowiedź HTML z listą tagów
      */
     #[Route('/', name: 'admin_tag_index')]
-    public function index(TagService $tagService): Response
+    public function index(): Response
     {
         return $this->render('url/admin_tag.html.twig', [
-            'tags' => $tagService->getAllTags(),
+            'tags' => $this->tagService->getAllTags(),
         ]);
     }
 
     /**
      * Tworzenie nowego tagu.
      *
-     * @param Request    $request    Obiekt żądania HTTP
-     * @param TagService $tagService Serwis do obsługi tagów
+     * @param Request $request Obiekt żądania
      *
      * @return Response Odpowiedź HTML z formularzem lub przekierowaniem
      */
     #[Route('/new', name: 'admin_tag_new')]
-    public function new(Request $request, TagService $tagService): Response
+    public function new(Request $request): Response
     {
         $tag = new Tag();
         $form = $this->createForm(TagType::class, $tag);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $tagService->createTag($tag);
+            $this->tagService->createTag($tag);
             $this->addFlash('success', $this->translator->trans('flash.tag.created'));
 
             return $this->redirectToRoute('admin_tag_index');
@@ -74,20 +74,19 @@ class AdminTagController extends AbstractController
     /**
      * Edycja istniejącego tagu.
      *
-     * @param Request    $request    Obiekt żądania HTTP
-     * @param Tag        $tag        Encja tagu do edycji
-     * @param TagService $tagService Serwis do obsługi tagów
+     * @param Request $request Obiekt żądania
+     * @param Tag     $tag     Encja tagu do edycji
      *
      * @return Response Odpowiedź HTML z formularzem lub przekierowaniem
      */
     #[Route('/{id}/edit', name: 'admin_tag_edit')]
-    public function edit(Request $request, Tag $tag, TagService $tagService): Response
+    public function edit(Request $request, Tag $tag): Response
     {
         $form = $this->createForm(TagType::class, $tag);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $tagService->updateTag($tag);
+            $this->tagService->updateTag($tag);
             $this->addFlash('success', $this->translator->trans('flash.tag.updated'));
 
             return $this->redirectToRoute('admin_tag_index');
@@ -102,17 +101,16 @@ class AdminTagController extends AbstractController
     /**
      * Usuwanie tagu po potwierdzeniu CSRF.
      *
-     * @param Request    $request    Obiekt żądania HTTP
-     * @param Tag        $tag        Encja tagu do usunięcia
-     * @param TagService $tagService Serwis do obsługi tagów
+     * @param Request $request Obiekt żądania
+     * @param Tag     $tag     Encja tagu do usunięcia
      *
      * @return Response Przekierowanie po usunięciu
      */
     #[Route('/{id}/delete', name: 'admin_tag_delete', methods: ['POST'])]
-    public function delete(Request $request, Tag $tag, TagService $tagService): Response
+    public function delete(Request $request, Tag $tag): Response
     {
-        if ($this->isCsrfTokenValid('delete-tag-' . $tag->getId(), $request->request->get('_token'))) {
-            $tagService->deleteTag($tag);
+        if ($this->isCsrfTokenValid('delete-tag-'.$tag->getId(), $request->request->get('_token'))) {
+            $this->tagService->deleteTag($tag);
             $this->addFlash('success', $this->translator->trans('flash.tag.deleted'));
         }
 

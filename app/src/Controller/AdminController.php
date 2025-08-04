@@ -24,9 +24,10 @@ class AdminController extends AbstractController
     /**
      * Konstruktor kontrolera.
      *
-     * @param TranslatorInterface $translator Serwis tłumaczeń
+     * @param TranslatorInterface $translator   Serwis tłumaczeń
+     * @param AdminService        $adminService Serwis zarządzający adminem
      */
-    public function __construct(private readonly TranslatorInterface $translator)
+    public function __construct(private readonly TranslatorInterface $translator, private readonly AdminService $adminService)
     {
     }
 
@@ -64,7 +65,8 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $plainPassword = $form->get('plainPassword')->getData();
-            $adminService->updateProfile($admin, $plainPassword);
+            $this->adminService->updateProfile($admin, $plainPassword);
+
             $this->addFlash('success', $this->translator->trans('flash.admin.profile_updated'));
 
             return $this->redirectToRoute('admin_profile');

@@ -10,62 +10,43 @@ use App\Entity\Tag;
 use App\Repository\TagRepository;
 
 /**
- * Serwis do zarządzania tagami (tworzenie, aktualizacja, usuwanie, listowanie).
+ * Serwis operujący na encjach Tag.
  */
-class TagService
+readonly class TagService
 {
-    private TagRepository $tagRepository;
-
     /**
-     * Konstruktor serwisu tagów.
+     * Konstruktor z wstrzyknięciem zależności.
      *
-     * @param TagRepository $tagRepository Repozytorium tagów
+     * @param TagRepository $tagRepository Repozytorium obsługujące encję Tag
      */
-    public function __construct(TagRepository $tagRepository)
+    public function __construct(private TagRepository $tagRepository)
     {
-        $this->tagRepository = $tagRepository;
     }
 
     /**
-     * Tworzy slug i zapisuje nowy tag do bazy danych.
+     * Tworzy nowy tag – generuje slug i zapisuje go w bazie danych.
      *
-     * @param Tag $tag Nowy tag
+     * @param Tag $tag Nowy tag do zapisania
      */
     public function createTag(Tag $tag): void
     {
-        $slug = $this->generateSlug($tag->getName());
-        $tag->setSlug($slug);
-
+        $tag->setSlug($this->generateSlug($tag->getName()));
         $this->tagRepository->save($tag);
     }
 
     /**
-     * Generuje slug z nazwy tagu (usuwa znaki specjalne, zamienia spacje na myślniki).
-     *
-     * @param string $name Nazwa tagu
-     *
-     * @return string Slug
-     */
-    public function generateSlug(string $name): string
-    {
-        return strtolower(trim(preg_replace('/[^a-z0-9]+/i', '-', $name), '-'));
-    }
-
-    /**
-     * Aktualizuje istniejący tag (np. po zmianie nazwy).
+     * Aktualizuje istniejący tag – w tym odświeża jego slug.
      *
      * @param Tag $tag Tag do zaktualizowania
      */
     public function updateTag(Tag $tag): void
     {
-        $slug = $this->generateSlug($tag->getName());
-        $tag->setSlug($slug);
-
+        $tag->setSlug($this->generateSlug($tag->getName()));
         $this->tagRepository->save($tag);
     }
 
     /**
-     * Usuwa tag.
+     * Usuwa tag z bazy danych.
      *
      * @param Tag $tag Tag do usunięcia
      */
@@ -75,12 +56,25 @@ class TagService
     }
 
     /**
-     * Zwraca wszystkie tagi.
+     * Zwraca wszystkie dostępne tagi z bazy.
      *
-     * @return Tag[] Lista tagów
+     * @return Tag[] Tablica obiektów tagów
      */
     public function getAllTags(): array
     {
         return $this->tagRepository->findAll();
+    }
+
+    /**
+     * Generuje slug z nazwy tagu.
+     * Zastępuje niedozwolone znaki myślnikami, usuwa spacje i konwertuje na małe litery.
+     *
+     * @param string $name Nazwa tagu
+     *
+     * @return string string
+     */
+    private function generateSlug(string $name): string
+    {
+        return strtolower(trim(preg_replace('/[^a-z0-9]+/i', '-', $name), '-'));
     }
 }

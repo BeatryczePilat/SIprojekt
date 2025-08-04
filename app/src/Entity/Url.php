@@ -109,6 +109,7 @@ class Url
      * Ustawia oryginalny adres URL.
      *
      * @param string $originalURL Oryginalny adres URL do ustawienia.
+     *
      * @return $this
      */
     public function setOriginalURL(string $originalURL): static
@@ -132,6 +133,7 @@ class Url
      *  Ustawia krótki kod adresu URL.
      *
      * @param string $shortCode string $shortCode Krótki kod do ustawienia
+     *
      * @return $this $this
      */
     public function setShortCode(string $shortCode): static
@@ -155,6 +157,7 @@ class Url
      *  Ustawia adres e-mail powiązany z adresem URL.
      *
      * @param string|null $email string|null $email
+     *
      * @return $this
      */
     public function setEmail(?string $email): static
@@ -178,6 +181,7 @@ class Url
      * Ustawia liczbę kliknięć w adres URL.
      *
      * @param int $clicks Liczba kliknięć do ustawienia.
+     *
      * @return $this
      */
     public function setClicks(int $clicks): static
@@ -201,6 +205,7 @@ class Url
      * Ustawia datę utworzenia adresu URL.
      *
      * @param DateTimeInterface $createdAt DateTimeInterface $createdAt
+     *
      * @return $this
      */
     public function setCreatedAt(DateTimeInterface $createdAt): static
@@ -225,6 +230,7 @@ class Url
      * Ustawia datę ostatniej aktualizacji adresu URL.
      *
      * @param DateTimeInterface $updatedAt DateTimeInterface $updatedAt
+     *
      * @return $this
      */
     public function setUpdatedAt(DateTimeInterface $updatedAt): static
@@ -248,11 +254,13 @@ class Url
      * Ustawianie tagu.
      *
      * @param Tag|null $tag Tag|null $tag
+     *
      * @return $this $this
      */
     public function setTag(?Tag $tag): static
     {
         $this->tag = $tag;
+
         return $this;
     }
 
