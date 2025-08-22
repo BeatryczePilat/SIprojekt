@@ -14,6 +14,11 @@
 /.phpunit.cache/
 ###< phpunit/phpunit ###
 
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
 ###> symfony/asset-mapper ###
 /public/assets/
 /assets/vendor/
@@ -32,4 +37,3 @@
 ###> phpstan/phpstan ###
 phpstan.neon
 ###< phpstan/phpstan ###
-echo -e "\n*\n!app/\n!app/**" >> .gitignore
