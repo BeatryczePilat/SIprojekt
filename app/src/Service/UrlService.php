@@ -8,7 +8,6 @@ namespace App\Service;
 
 use App\Entity\Url;
 use App\Repository\UrlRepository;
-use DateTimeImmutable;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Random\RandomException;
@@ -44,10 +43,10 @@ readonly class UrlService
         $url->setClicks(0);
 
         if (!$url->getCreatedAt()) {
-            $url->setCreatedAt(new DateTimeImmutable());
+            $url->setCreatedAt(new \DateTimeImmutable());
         }
 
-        $url->setUpdatedAt(new DateTimeImmutable());
+        $url->setUpdatedAt(new \DateTimeImmutable());
 
         $this->urlRepository->save($url);
     }
@@ -109,7 +108,7 @@ readonly class UrlService
      */
     public function updateUrl(Url $url): void
     {
-        $url->setUpdatedAt(new DateTimeImmutable());
+        $url->setUpdatedAt(new \DateTimeImmutable());
         $this->urlRepository->save($url);
     }
 

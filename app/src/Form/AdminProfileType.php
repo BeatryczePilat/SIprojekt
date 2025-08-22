@@ -33,11 +33,11 @@ class AdminProfileType extends AbstractType
                 'required' => true,
             ])
             ->add('nickname', TextType::class, [
-                    'label' => 'admin.login_data.nickname',
-                    'required' => false,
-                    'attr' => [
-                        'class' => 'form-control',
-                    ],
+                'label' => 'admin.login_data.nickname',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                ],
             ])
             ->add('currentPassword', PasswordType::class, [
                 'label' => 'form.admin.current_password.label',

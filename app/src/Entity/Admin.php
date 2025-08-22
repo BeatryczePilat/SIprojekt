@@ -21,8 +21,6 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * ID.
-     *
-     * @var int|null int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -31,24 +29,18 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Email.
-     *
-     * @var string|null string|null
      */
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
     /**
      * Role użytkownika.
-     *
-     * @var array array
      */
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
     /**
      * Zaszyfrowane hasło użytkownika.
-     *
-     * @var string|null string|null
      */
     #[ORM\Column]
     private ?string $password = null;
@@ -113,7 +105,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Ustawia role użytkownika.
      *
-     * @param string[] $roles roles string
+     * @param array $roles array
      *
      * @return void void
      */
@@ -135,9 +127,9 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Ustawia zaszyfrowane hasło.
      *
-     * @param string $password string $password
+     * @param string $password string
      *
-     * @return $this $this
+     * @return $this this
      */
     public function setPassword(string $password): static
     {
@@ -145,6 +137,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
     /**
      * Nickname (pseudonim) administratora.
      *
@@ -166,9 +159,9 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Ustawia pseudonim administratora.
      *
-     * @param string|null $nickname string|null $nickname
+     * @param string|null $nickname string|null
      *
-     * @return static
+     * @return $this this
      */
     public function setNickname(?string $nickname): static
     {
@@ -176,6 +169,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
     /**
      * Usuwa dane tymczasowe (zgodnie z interfejsem UserInterface).
      *

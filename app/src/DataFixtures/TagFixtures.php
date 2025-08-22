@@ -1,7 +1,9 @@
 <?php
+
 /**
- * Tag Fixtures
+ * Tag Fixtures.
  */
+
 namespace App\DataFixtures;
 
 use App\Entity\Tag;
@@ -10,16 +12,14 @@ use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
 /**
- * Klasa TagFixtures
- *
- * Tworzy losowe encje Tag z wykorzystaniem biblioteki Faker.
+ * Klasa TagFixtures.
  */
 class TagFixtures extends Fixture
 {
     /**
      * Ładuje dane fikcyjne dla encji Tag.
      *
-     * @param ObjectManager $manager Menedżer encji Doctrine.
+     * @param ObjectManager $manager Menedżer encji Doctrine
      */
     public function load(ObjectManager $manager): void
     {
@@ -27,7 +27,7 @@ class TagFixtures extends Fixture
         $faker = Factory::create();
         $usedNames = [];
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             // Ensure unique tag names
             do {
                 $name = ucfirst($faker->unique()->word());

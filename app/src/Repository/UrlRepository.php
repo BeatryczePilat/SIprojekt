@@ -18,7 +18,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class UrlRepository extends ServiceEntityRepository
 {
-    const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
      * Konstruktor repozytorium Url.

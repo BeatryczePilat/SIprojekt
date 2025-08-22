@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Kernel
- */
-
 namespace App;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;

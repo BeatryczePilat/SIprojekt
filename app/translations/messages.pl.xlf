@@ -513,6 +513,70 @@
           <source>search.no_tag</source>
           <target>Brak przypisanego tagu</target>
       </trans-unit>
+<trans-unit id="messages.address_url">
+  <source>Adres URL</source>
+  <target>Adres URL</target>
+</trans-unit>
+
+<trans-unit id="messages.email">
+  <source>Adres e-mail</source>
+  <target>Adres e-mail</target>
+</trans-unit>
+
+<trans-unit id="messages.tags">
+  <source>Tagi</source>
+  <target>Tagi</target>
+</trans-unit>
+
+<trans-unit id="messages.no_tag">
+  <source>-- wybierz tag --</source>
+  <target>-- wybierz tag --</target>
+</trans-unit>
+<trans-unit id="messages.shortcut">
+  <source>Skrót</source>
+  <target>Skrót</target>
+</trans-unit>
+
+<trans-unit id="messages.tag">
+  <source>Tag</source>
+  <target>Tag</target>
+</trans-unit>
+<trans-unit id="form.url_filter.tag.placeholder">
+  <source>form.url_filter.tag.placeholder</source>
+  <target>-- wybierz dowolny --</target>
+</trans-unit>
+<trans-unit id="messages.edit_tag">
+  <source>Edycja tagu</source>
+  <target>Edycja tagu</target>
+</trans-unit>
+
+<trans-unit id="form.tag.name.label">
+  <source>form.tag.name.label</source>
+  <target>Nazwa tagu</target>
+</trans-unit>
+<trans-unit id="messages.original_url">
+  <source>Oryginalny URL</source>
+  <target>Oryginalny URL</target>
+</trans-unit>
+
+<trans-unit id="messages.email_label">
+  <source>Email</source>
+  <target>Email</target>
+</trans-unit>
+<trans-unit id="messages.current_password">
+  <source>Obecne hasło</source>
+  <target>Obecne hasło</target>
+</trans-unit>
+
+<trans-unit id="messages.nickname">
+  <source>Pseudonim</source>
+  <target>Pseudonim</target>
+</trans-unit>
+
+<trans-unit id="messages.new_password">
+  <source>Nowe hasło</source>
+  <target>Nowe hasło</target>
+</trans-unit>
 
     </body>
   </file>

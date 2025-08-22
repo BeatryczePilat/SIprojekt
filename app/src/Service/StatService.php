@@ -27,11 +27,7 @@ readonly class StatService
     /**
      * Zwraca podstawowe statystyki aplikacji.
      *
-     * @return array<string, int> Tablica ze statystykami:
-     *                             - totalUrls: liczba wszystkich URL
-     *                             - totalClicks: suma kliknięć
-     *                             - uniqueEmails: liczba unikalnych emaili
-     *                             - totalTags: liczba tagów
+     * @return array<string, int> Tablica ze statystykami
      */
     public function getStats(): array
     {

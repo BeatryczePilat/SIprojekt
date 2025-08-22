@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Admin Fixtures
+ * Admin Fixtures.
  */
 
 namespace App\DataFixtures;
@@ -12,16 +12,14 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
- * Klasa AdminFixtures
- *
- * Tworzy domyślnego administratora z przypisaną rolą i zaszyfrowanym hasłem.
+ * Class AdminFixtures.
  */
 class AdminFixtures extends Fixture
 {
     /**
-     * Konstruktor klasy.
+     * Constructor.
      *
-     * @param UserPasswordHasherInterface $passwordHasher Usługa do haszowania haseł użytkowników.
+     * @param UserPasswordHasherInterface $passwordHasher Usługa do haszowania haseł użytkowników
      */
     public function __construct(private readonly UserPasswordHasherInterface $passwordHasher)
     {
@@ -30,11 +28,12 @@ class AdminFixtures extends Fixture
     /**
      * Ładuje dane fikcyjne dla encji Admin.
      *
-     * @param ObjectManager $manager Menedżer encji Doctrine.
+     * @param ObjectManager $manager ObjectManager
+     *
+     * @return void void
      */
     public function load(ObjectManager $manager): void
     {
-        // Inicjalizacja generatora Faker
         $faker = \Faker\Factory::create();
 
         $admin = new Admin();

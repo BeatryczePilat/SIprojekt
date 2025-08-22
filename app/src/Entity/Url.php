@@ -7,9 +7,8 @@
 namespace App\Entity;
 
 use App\Repository\UrlRepository;
-use DateTimeImmutable;
-use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Reprezentuje encję Url, przechowującą informacje o skróconych adresach URL.
@@ -20,8 +19,6 @@ class Url
 {
     /**
      * ID.
-     *
-     * @var int|null int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -30,65 +27,53 @@ class Url
 
     /**
      * Oryginalny url.
-     *
-     * @var string|null string|null
      */
     #[ORM\Column(length: 255)]
     private ?string $originalURL = null;
 
     /**
      * Skrócony url.
-     *
-     * @var string|null string|null
      */
     #[ORM\Column(length: 255)]
     private ?string $shortCode = null;
 
     /**
      * Email.
-     *
-     * @var string|null string|null
      */
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
 
     /**
      * Kliknięcia.
-     *
-     * @var int|null int|null
      */
     #[ORM\Column]
     private ?int $clicks = null;
 
     /**
      * Stworzono (data).
-     *
-     * @var DateTimeInterface|null DateTimeInterface|null
      */
-    #[ORM\Column(type: 'datetime')]
-    private ?DateTimeInterface $createdAt = null;
+    #[ORM\Column(type: 'datetime_immutable')]
+    #[Gedmo\Timestampable(on: 'create')]
+    private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * Aktualizowano (data).
-     *
-     * @var DateTimeInterface|null DateTimeInterface|null
      */
-    #[ORM\Column(type: 'datetime')]
-    private ?DateTimeInterface $updatedAt = null;
+    #[ORM\Column(type: 'datetime_immutable')]
+    #[Gedmo\Timestampable(on: 'update')]
+    private ?\DateTimeImmutable $updatedAt = null;
 
     /**
      * Tag.
-     *
-     * @var Tag|null Tag|null
      */
     #[ORM\ManyToOne(targetEntity: Tag::class)]
-    #[ORM\JoinColumn(nullable: true, onDelete: "SET NULL")]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Tag $tag = null;
 
     /**
      * Pobiera unikalny identyfikator adresu URL.
      *
-     * @return int|null int|null Identyfikator adresu URL.
+     * @return int|null int|null
      */
     public function getId(): ?int
     {
@@ -98,7 +83,7 @@ class Url
     /**
      * Pobiera oryginalny adres URL.
      *
-     * @return string|null string|null Oryginalny adres URL.
+     * @return string|null string|null
      */
     public function getOriginalURL(): ?string
     {
@@ -108,9 +93,9 @@ class Url
     /**
      * Ustawia oryginalny adres URL.
      *
-     * @param string $originalURL Oryginalny adres URL do ustawienia.
+     * @param string $originalURL originalURL
      *
-     * @return $this
+     * @return $this this
      */
     public function setOriginalURL(string $originalURL): static
     {
@@ -122,7 +107,7 @@ class Url
     /**
      * Pobiera krótki kod adresu URL.
      *
-     * @return string|null string|null Krótki kod adresu URL.
+     * @return string|null string|null
      */
     public function getShortCode(): ?string
     {
@@ -132,9 +117,9 @@ class Url
     /**
      *  Ustawia krótki kod adresu URL.
      *
-     * @param string $shortCode string $shortCode Krótki kod do ustawienia
+     * @param string $shortCode string
      *
-     * @return $this $this
+     * @return $this this
      */
     public function setShortCode(string $shortCode): static
     {
@@ -146,7 +131,7 @@ class Url
     /**
      * Pobiera adres e-mail powiązany z adresem URL.
      *
-     * @return string|null string|null Adres e-mail.
+     * @return string|null string|null
      */
     public function getEmail(): ?string
     {
@@ -170,7 +155,7 @@ class Url
     /**
      * Pobiera liczbę kliknięć w adres URL.
      *
-     * @return int|null int|null Liczba kliknięć.
+     * @return int|null int|null Liczba kliknięć
      */
     public function getClicks(): ?int
     {
@@ -180,9 +165,9 @@ class Url
     /**
      * Ustawia liczbę kliknięć w adres URL.
      *
-     * @param int $clicks Liczba kliknięć do ustawienia.
+     * @param int $clicks Liczba kliknięć do ustawienia
      *
-     * @return $this
+     * @return $this this
      */
     public function setClicks(int $clicks): static
     {
@@ -194,9 +179,9 @@ class Url
     /**
      * Pobiera datę utworzenia adresu URL.
      *
-     * @return DateTimeInterface|null DateTimeInterface|null
+     * @return \DateTimeImmutable|null \DateTimeImmutable|null
      */
-    public function getCreatedAt(): ?DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
     }
@@ -204,11 +189,11 @@ class Url
     /**
      * Ustawia datę utworzenia adresu URL.
      *
-     * @param DateTimeInterface $createdAt DateTimeInterface $createdAt
+     * @param \DateTimeImmutable $createdAt \DateTimeImmutable
      *
      * @return $this
      */
-    public function setCreatedAt(DateTimeInterface $createdAt): static
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
 
@@ -218,22 +203,21 @@ class Url
     /**
      * Pobiera datę ostatniej aktualizacji adresu URL.
      *
-     * @return DateTimeInterface|null DateTimeInterface|null
+     * @return \DateTimeImmutable|null \DateTimeImmutable|null
      */
-    public function getUpdatedAt(): ?DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
     }
 
-
     /**
      * Ustawia datę ostatniej aktualizacji adresu URL.
      *
-     * @param DateTimeInterface $updatedAt DateTimeInterface $updatedAt
+     * @param \DateTimeImmutable $updatedAt \DateTimeImmutable
      *
-     * @return $this
+     * @return $this this
      */
-    public function setUpdatedAt(DateTimeInterface $updatedAt): static
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 
@@ -255,7 +239,7 @@ class Url
      *
      * @param Tag|null $tag Tag|null $tag
      *
-     * @return $this $this
+     * @return $this this
      */
     public function setTag(?Tag $tag): static
     {
@@ -266,16 +250,17 @@ class Url
 
     /**
      * Automatycznie ustawia daty przed zapisem do bazy.
+     *
      * @return void void
      */
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
     public function updateTimestamps(): void
     {
-        $this->updatedAt = new DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
 
-        if ($this->createdAt === null) {
-            $this->createdAt = new DateTimeImmutable();
+        if (null === $this->createdAt) {
+            $this->createdAt = new \DateTimeImmutable();
         }
     }
 }

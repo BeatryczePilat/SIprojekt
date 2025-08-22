@@ -17,8 +17,6 @@ class Tag
 {
     /**
      * ID.
-     *
-     * @var int|null int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -27,16 +25,12 @@ class Tag
 
     /**
      * Nazwa.
-     *
-     * @var string|null string|null
      */
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
     /**
      * Slug.
-     *
-     * @var string|null string|null
      */
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
@@ -45,7 +39,6 @@ class Tag
      * Pobiera unikalny identyfikator tagu.
      *
      * @return int|null int|null
-     * Identyfikator tagu lub null, jeśli nie ustawiono.
      */
     public function getId(): ?int
     {
@@ -56,7 +49,6 @@ class Tag
      * Pobiera nazwę tagu.
      *
      * @return string|null string|null
-     * Nazwa tagu lub null, jeśli nie ustawiono.
      */
     public function getName(): ?string
     {
@@ -81,7 +73,6 @@ class Tag
      * Pobiera slug tagu.
      *
      * @return string|null string|null
-     * Slug tagu lub null, jeśli nie ustawiono.
      */
     public function getSlug(): ?string
     {
