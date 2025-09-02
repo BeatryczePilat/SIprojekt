@@ -21,7 +21,7 @@ Paths from configuration file have been overridden by paths provided as command 
 Found 1 of 28 files that can be fixed in 0.039 seconds, 18.00 MB memory used
 Running phpcs... 
 Running debug:translation (en)... 
- ------- -------- ---- ---------------------- 
+ ------- -------- ---- ----------------------
   State   Domain   Id   Message Preview (en)  
  ------- -------- ---- ---------------------- 
 
