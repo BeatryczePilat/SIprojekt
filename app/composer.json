@@ -102,7 +102,7 @@
         "doctrine/doctrine-fixtures-bundle": "^4.1",
         "escapestudios/symfony2-coding-standard": "^3.16",
         "fakerphp/faker": "^1.24",
-        "friendsofphp/php-cs-fixer": "^3.86",
+        "friendsofphp/php-cs-fixer": "^3.87",
         "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^11.5",
         "rector/rector": "^2.1",
