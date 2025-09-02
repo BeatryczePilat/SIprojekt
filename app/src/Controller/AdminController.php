@@ -7,7 +7,8 @@
 namespace App\Controller;
 
 use App\Entity\Admin;
-use App\Form\AdminProfileType;
+use App\Form\AdminPasswordType;
+use App\Form\AdminProfileDataType;
 use App\Service\AdminService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,20 +61,46 @@ class AdminController extends AbstractController
             throw $this->createAccessDeniedException();
         }
 
-        $form = $this->createForm(AdminProfileType::class, $admin);
-        $form->handleRequest($request);
+        $dataForm = $this->createForm(AdminProfileDataType::class, $admin, [
+            'validation_groups' => ['profile'],
+        ]);
+        $dataForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $plainPassword = $form->get('plainPassword')->getData();
-            $this->adminService->updateProfile($admin, $plainPassword);
-
+        if ($dataForm->isSubmitted() && $dataForm->isValid()) {
+            $adminService->updateProfile($admin);
             $this->addFlash('success', $this->translator->trans('flash.admin.profile_updated'));
 
             return $this->redirectToRoute('admin_profile');
         }
 
-        return $this->render('admin/profile.html.twig', [
-            'form' => $form->createView(),
+        // Formularz zmiany hasła
+        $passwordForm = $this->createForm(AdminPasswordType::class, null, [
+            'validation_groups' => ['password'],
+        ]);
+        $passwordForm->handleRequest($request);
+
+        if ($passwordForm->isSubmitted() && $passwordForm->isValid()) {
+            $currentPassword = $passwordForm->get('currentPassword')->getData();
+            $newPassword     = $passwordForm->get('newPassword')->getData();
+
+            $success = $adminService->updateProfileWithPasswordVerification(
+                $admin,
+                $currentPassword,
+                $newPassword
+            );
+
+            if ($success) {
+                $this->addFlash('success', $this->translator->trans('flash.credentials.updated'));
+            } else {
+                $this->addFlash('error', $this->translator->trans('admin.password.incorrect'));
+            }
+
+            return $this->redirectToRoute('admin_profile');
+        }
+
+        return $this->render('admin/change_password.html.twig', [
+            'dataForm'     => $dataForm->createView(),
+            'passwordForm' => $passwordForm->createView(),
         ]);
     }
 }

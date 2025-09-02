@@ -7,7 +7,8 @@
 namespace App\Controller;
 
 use App\Entity\Admin;
-use App\Form\AdminProfileType;
+use App\Form\AdminProfileDataType;
+use App\Form\AdminPasswordType;
 use App\Service\AdminService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,35 +51,39 @@ class AdminSecurityController extends AbstractController
             throw $this->createAccessDeniedException();
         }
 
-        $form = $this->createForm(AdminProfileType::class, $user);
-        $form->handleRequest($request);
+        // Formularz do zmiany danych profilu (e-mail, nickname itp.)
+        $dataForm = $this->createForm(AdminProfileDataType::class, $user);
+        $dataForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $current = $form->get('currentPassword')->getData();
-            $new = $form->get('newPassword')->getData();
+        if ($dataForm->isSubmitted() && $dataForm->isValid()) {
+            $this->adminService->saveProfile($user);
+            $this->addFlash('success', $this->translator->trans('flash.admin.profile_updated'));
 
-            if ($new) {
-                $success = $this->adminService->changePasswordWithVerification($user, $current, $new);
+            return $this->redirectToRoute('admin_dashboard');
+        }
 
-                if (!$success) {
-                    $this->addFlash('danger', $this->translator->trans('flash.password.invalid'));
+        // Formularz do zmiany hasła
+        $passwordForm = $this->createForm(AdminPasswordType::class);
+        $passwordForm->handleRequest($request);
 
-                    return $this->render('url/admin_change_password.html.twig', [
-                        'form' => $form->createView(),
-                    ]);
-                }
+        if ($passwordForm->isSubmitted() && $passwordForm->isValid()) {
+            $current = $passwordForm->get('currentPassword')->getData();
+            $new = $passwordForm->get('newPassword')->getData();
+
+            $success = $this->adminService->changePasswordWithVerification($user, $current, $new);
+
+            if (!$success) {
+                $this->addFlash('danger', $this->translator->trans('flash.password.invalid'));
             } else {
-                // Zapis tylko adresu e-mail
-                $this->adminService->saveProfile($user);
+                $this->addFlash('success', $this->translator->trans('flash.credentials.updated'));
             }
-
-            $this->addFlash('success', $this->translator->trans('flash.credentials.updated'));
 
             return $this->redirectToRoute('admin_dashboard');
         }
 
         return $this->render('url/admin_change_password.html.twig', [
-            'form' => $form->createView(),
+            'dataForm' => $dataForm->createView(),
+            'passwordForm' => $passwordForm->createView(),
         ]);
     }
 }

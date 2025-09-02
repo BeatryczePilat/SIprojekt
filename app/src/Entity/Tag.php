@@ -8,6 +8,7 @@ namespace App\Entity;
 
 use App\Repository\TagRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reprezentuje encję Tag, używaną do kategoryzowania adresów URL.
@@ -17,8 +18,6 @@ class Tag
 {
     /**
      * ID.
-     *
-     * @var int|null int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -27,25 +26,36 @@ class Tag
 
     /**
      * Nazwa.
-     *
-     * @var string|null string|null
      */
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'tag.name.not_blank')]
+    #[Assert\Length(max: 255, maxMessage: 'tag.name.max_length')]
     private ?string $name = null;
 
     /**
      * Slug.
-     *
-     * @var string|null string|null
      */
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
+    #[Assert\Length(max: 255, maxMessage: 'tag.slug.max_length')]
     private ?string $slug = null;
+
+    /**
+     * generate.
+     */
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    #[ORM\HasLifecycleCallbacks]
+    public function generateSlug(): void
+    {
+        if (!$this->slug && $this->name) {
+            $this->slug = strtolower(preg_replace('/[^a-z0-9]+/', '-', $this->name));
+        }
+    }
 
     /**
      * Pobiera unikalny identyfikator tagu.
      *
      * @return int|null int|null
-     * Identyfikator tagu lub null, jeśli nie ustawiono.
      */
     public function getId(): ?int
     {
@@ -56,7 +66,6 @@ class Tag
      * Pobiera nazwę tagu.
      *
      * @return string|null string|null
-     * Nazwa tagu lub null, jeśli nie ustawiono.
      */
     public function getName(): ?string
     {
@@ -81,7 +90,6 @@ class Tag
      * Pobiera slug tagu.
      *
      * @return string|null string|null
-     * Slug tagu lub null, jeśli nie ustawiono.
      */
     public function getSlug(): ?string
     {

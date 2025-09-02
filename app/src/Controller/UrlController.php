@@ -29,14 +29,14 @@ class UrlController extends AbstractController
      * Konstruktor kontrolera.
      *
      * @param TranslatorInterface $translator    Serwis
-     * @param UrlService          $urlService    Serwis do obsługi
-     *                                           adresów
+     * @param UrlService          $urlService    Serwis do obsługi adresów
      * @param StatService         $statService   Serwis statystyk
      * @param UrlRepository       $urlRepository Repozytorium URL-i
      */
     public function __construct(private readonly TranslatorInterface $translator, private readonly UrlService $urlService, private readonly StatService $statService, private readonly UrlRepository $urlRepository)
     {
     }
+
     /**
      * Obsługuje skracanie adresu URL.
      *
@@ -91,6 +91,7 @@ class UrlController extends AbstractController
             'pagination' => $pagination,
         ]);
     }
+
     /**
      * Wyświetla adresy URL przypisane do danego tagu.
      *

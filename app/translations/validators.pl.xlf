@@ -9,6 +9,74 @@
         <source>Error</source>
         <target>Błąd</target>
       </trans-unit>
+      <trans-unit id="url.originalUrl.invalid">
+        <source>url.originalUrl.invalid</source>
+        <target>Niepoprawny format URL</target>
+      </trans-unit>
+      <trans-unit id="url.originalUrl.not_blank">
+        <source>url.originalUrl.not_blank</source>
+        <target>URL nie może być pusty</target>
+      </trans-unit>
+      <trans-unit id="url.shortCode.unique" resname="url.shortCode.unique">
+        <source>url.shortCode.unique</source>
+        <target>Ten skrót URL już istnieje.</target>
+      </trans-unit>
+      <trans-unit id="tag.slug.not_blank" resname="tag.slug.not_blank">
+          <source>tag.slug.not_blank</source>
+          <target>Slug tagu nie może być pusty</target>
+      </trans-unit>
+      <trans-unit id="Nowy tag">
+              <source>Nowy tag</source>
+              <target>Nowy tag</target>
+            </trans-unit>
+      <trans-unit id="url.email.invalid">
+           <source>url.email.invalid</source>
+           <target>Niepoprawny format adresu e-mail w URL</target>
+      </trans-unit>
+      <trans-unit id="admin.email.not_blank">
+                      <source>admin.email.not_blank</source>
+                      <target>Adres e-mail nie może być pusty</target>
+                  </trans-unit>
+                  <trans-unit id="admin.email.invalid">
+                      <source>admin.email.invalid</source>
+                      <target>Niepoprawny format adresu e-mail</target>
+                  </trans-unit>
+                  <trans-unit id="admin.password.not_blank">
+                      <source>admin.password.not_blank</source>
+                      <target>Hasło nie może być puste</target>
+                  </trans-unit>
+                  <trans-unit id="admin.nickname.min_length">
+                      <source>admin.nickname.min_length</source>
+                      <target>Nick jest za krótki</target>
+                  </trans-unit>
+                  <trans-unit id="admin.nickname.max_length">
+                      <source>admin.nickname.max_length</source>
+                      <target>Nick jest za długi</target>
+                  </trans-unit>
+                  <trans-unit id="tag.name.not_blank">
+                      <source>tag.name.not_blank</source>
+                      <target>Nazwa tagu nie może być pusta</target>
+                  </trans-unit>
+                  <trans-unit id="tag.name.max_length">
+                      <source>tag.name.max_length</source>
+                      <target>Nazwa tagu jest za długa</target>
+                  </trans-unit>
+                  <trans-unit id="tag.slug.max_length">
+                      <source>tag.slug.max_length</source>
+                      <target>Slug tagu jest za długi</target>
+                  </trans-unit>
+                  <trans-unit id="admin.password.current.not_blank">
+                      <source>admin.password.current.not_blank</source>
+                      <target>Aktualne hasło nie może być puste</target>
+                  </trans-unit>
+                  <trans-unit id="admin.password.new.not_blank">
+                      <source>admin.password.new.not_blank</source>
+                      <target>Nowe hasło nie może być puste</target>
+                  </trans-unit>
+                  <trans-unit id="admin.password.new.min_length">
+                      <source>admin.password.new.min_length</source>
+                      <target>Nowe hasło jest za krótkie</target>
+                  </trans-unit>
     </body>
   </file>
 </xliff>

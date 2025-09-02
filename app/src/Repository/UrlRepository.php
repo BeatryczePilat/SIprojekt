@@ -18,7 +18,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class UrlRepository extends ServiceEntityRepository
 {
-    const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
      * Konstruktor repozytorium Url.
@@ -68,6 +68,11 @@ class UrlRepository extends ServiceEntityRepository
     public function findLatestQuery(): Query
     {
         return $this->createQueryBuilder('u')
+            ->select(
+                'partial u.{id, originalUrl, shortCode, clicks, createdAt}',
+                'partial t.{id, name}'
+            )
+            ->leftJoin('u.tag', 't')
             ->orderBy('u.createdAt', 'DESC')
             ->getQuery();
     }
@@ -82,7 +87,11 @@ class UrlRepository extends ServiceEntityRepository
     public function findByTagSlug(string $slug): array
     {
         return $this->createQueryBuilder('u')
-            ->join('u.tag', 't')
+            ->select(
+                'partial u.{id, originalUrl, shortCode, clicks, createdAt}',
+                'partial t.{id, name}'
+            )
+            ->leftJoin('u.tag', 't')
             ->where('t.slug = :slug')
             ->setParameter('slug', $slug)
             ->orderBy('u.createdAt', 'DESC')
@@ -98,6 +107,11 @@ class UrlRepository extends ServiceEntityRepository
     public function findMostClickedQuery(): Query
     {
         return $this->createQueryBuilder('u')
+            ->select(
+                'partial u.{id, shortCode, originalUrl, clicks, createdAt}',
+                'partial t.{id, name}'
+            )
+            ->leftJoin('u.tag', 't') // LEFT JOIN jeśli tag może być NULL
             ->orderBy('u.clicks', 'DESC')
             ->getQuery();
     }
@@ -137,6 +151,7 @@ class UrlRepository extends ServiceEntityRepository
     {
         return (int) $this->createQueryBuilder('u')
             ->select('COUNT(DISTINCT u.email)')
+            ->where('u.email IS NOT NULL')
             ->getQuery()
             ->getSingleScalarResult();
     }
@@ -151,8 +166,11 @@ class UrlRepository extends ServiceEntityRepository
     public function findByFilters(array $filters): array
     {
         $qb = $this->createQueryBuilder('u')
-            ->leftJoin('u.tag', 't')
-            ->addSelect('t');
+            ->select(
+                'partial u.{id, originalUrl, shortCode, clicks, createdAt}',
+                'partial t.{id, name}'
+            )
+            ->leftJoin('u.tag', 't');
 
         if (!empty($filters['email'])) {
             $qb->andWhere('u.email LIKE :email')

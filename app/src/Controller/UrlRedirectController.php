@@ -40,9 +40,7 @@ class UrlRedirectController extends AbstractController
         $url = $this->urlService->handleRedirect($shortCode);
 
         if (!$url) {
-            throw $this->createNotFoundException(
-                $this->translator->trans('error.short_code_not_found')
-            );
+            throw $this->createNotFoundException($this->translator->trans('error.short_code_not_found'));
         }
 
         return $this->redirect($url->getOriginalUrl());

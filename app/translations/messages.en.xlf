@@ -591,7 +591,115 @@
          <source>search.no_tag</source>
          <target>No tag assigned</target>
      </trans-unit>
+     <trans-unit id="admin.email.not_blank">
+         <source>admin.email.not_blank</source>
+         <target>Email cannot be blank.</target>
+     </trans-unit>
 
+     <trans-unit id="admin.email.invalid">
+         <source>admin.email.invalid</source>
+         <target>Invalid email address.</target>
+     </trans-unit>
+
+     <trans-unit id="admin.password.not_blank">
+         <source>admin.password.not_blank</source>
+         <target>Password cannot be blank.</target>
+     </trans-unit>
+
+     <trans-unit id="admin.nickname.min_length">
+         <source>admin.nickname.min_length</source>
+         <target>Nickname must be at least {{ limit }} characters.</target>
+     </trans-unit>
+
+     <trans-unit id="admin.nickname.max_length">
+         <source>admin.nickname.max_length</source>
+         <target>Nickname cannot be longer than {{ limit }} characters.</target>
+     </trans-unit>
+
+     <trans-unit id="tag.name.not_blank">
+         <source>tag.name.not_blank</source>
+         <target>Tag name cannot be blank.</target>
+     </trans-unit>
+
+     <trans-unit id="tag.name.max_length">
+         <source>tag.name.max_length</source>
+         <target>Tag name cannot exceed {{ limit }} characters.</target>
+     </trans-unit>
+
+     <trans-unit id="tag.slug.not_blank">
+         <source>tag.slug.not_blank</source>
+         <target>Tag slug cannot be blank.</target>
+     </trans-unit>
+
+     <trans-unit id="tag.slug.max_length">
+         <source>tag.slug.max_length</source>
+         <target>Tag slug cannot exceed {{ limit }} characters.</target>
+     </trans-unit>
+
+     <trans-unit id="url.originalUrl.not_blank">
+         <source>url.originalUrl.not_blank</source>
+         <target>Original URL cannot be blank</target>
+     </trans-unit>
+
+     <trans-unit id="url.originalUrl.invalid">
+         <source>url.originalUrl.invalid</source>
+         <target>Invalid URL format</target>
+     </trans-unit>
+
+     <trans-unit id="admin.password.incorrect">
+         <source>admin.password.incorrect</source>
+         <target>The provided password is incorrect</target>
+     </trans-unit>
+
+     <trans-unit id="url.shortCode.min_length">
+         <source>url.shortCode.min_length</source>
+         <target>Short code must be at least 3 characters</target>
+     </trans-unit>
+
+     <trans-unit id="url.shortCode.max_length">
+         <source>url.shortCode.max_length</source>
+         <target>Short code cannot exceed 50 characters</target>
+     </trans-unit>
+
+     <trans-unit id="url.email.invalid">
+         <source>url.email.invalid</source>
+         <target>Invalid email address.</target>
+     </trans-unit>
+
+      <trans-unit id="admin.password.current.not_blank">
+        <source>admin.password.current.not_blank</source>
+        <target>Current password cannot be blank</target>
+      </trans-unit>
+
+      <trans-unit id="admin.password.new.not_blank">
+        <source>admin.password.new.not_blank</source>
+        <target>New password cannot be blank</target>
+      </trans-unit>
+
+      <trans-unit id="admin.password.new.min_length">
+        <source>admin.password.new.min_length</source>
+        <target>Password must be at least 6 characters long</target>
+      </trans-unit>
+
+      <trans-unit id="admin.profile_data.title">
+        <source>admin.profile_data.title</source>
+        <target>Edit profile data</target>
+      </trans-unit>
+
+      <trans-unit id="admin.profile_data.submit">
+        <source>admin.profile_data.submit</source>
+        <target>Save profile</target>
+      </trans-unit>
+
+      <trans-unit id="admin.change_password.title">
+        <source>admin.change_password.title</source>
+        <target>Change password</target>
+      </trans-unit>
+
+      <trans-unit id="admin.change_password.submit">
+        <source>admin.change_password.submit</source>
+        <target>Update password</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

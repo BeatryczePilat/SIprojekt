@@ -469,6 +469,58 @@
         <source>form.tag.new_title</source>
         <target>Nowy tag</target>
       </trans-unit>
+      <trans-unit id="form.tag.new_title" resname="form.tag.new_title">
+        <source>Nowy tag</source>
+        <target>Nowy tag</target>
+      </trans-unit>
+      <trans-unit id="navbar.admin">
+                      <source>navbar.admin</source>
+                      <target>Admin</target>
+                  </trans-unit>
+                  <trans-unit id="login.email">
+                      <source>login.email</source>
+                      <target>E-mail</target>
+                  </trans-unit>
+                  <trans-unit id="tag.id">
+                      <source>tag.id</source>
+                      <target>ID</target>
+                  </trans-unit>
+                  <trans-unit id="tag.slug">
+                      <source>tag.slug</source>
+                      <target>Slug</target>
+                  </trans-unit>
+                  <trans-unit id="admin.url_list.id">
+                      <source>admin.url_list.id</source>
+                      <target>ID</target>
+                  </trans-unit>
+                  <trans-unit id="admin.url_list.email">
+                      <source>admin.url_list.email</source>
+                      <target>E-mail</target>
+                  </trans-unit>
+                  <trans-unit id="edit_url.email">
+                      <source>edit_url.email</source>
+                      <target>E-mail</target>
+                  </trans-unit>
+                  <trans-unit id="search.label.tag">
+                      <source>search.label.tag</source>
+                      <target>Tag</target>
+                  </trans-unit>
+                  <trans-unit id="search.table.id">
+                      <source>search.table.id</source>
+                      <target>ID</target>
+                  </trans-unit>
+                  <trans-unit id="search.table.url">
+                      <source>search.table.url</source>
+                      <target>URL</target>
+                  </trans-unit>
+                  <trans-unit id="search.table.email">
+                      <source>search.table.email</source>
+                      <target>E-mail</target>
+                  </trans-unit>
+      <trans-unit id="admin.password.incorrect">
+        <source>admin.password.incorrect</source>
+        <target>Podane hasło jest nieprawidłowe</target>
+      </trans-unit>
       <trans-unit id="hcRcGXL" resname="form.tag.edit_title">
         <source>form.tag.edit_title</source>
         <target>Edycja tagu</target>
@@ -512,6 +564,104 @@
       <trans-unit id="search.no_tag">
           <source>search.no_tag</source>
           <target>Brak przypisanego tagu</target>
+      </trans-unit>
+      <trans-unit id="messages.address_url">
+        <source>Adres URL</source>
+        <target>Adres URL</target>
+      </trans-unit>
+
+      <trans-unit id="messages.email">
+        <source>Adres e-mail</source>
+        <target>Adres e-mail</target>
+      </trans-unit>
+
+      <trans-unit id="messages.tags">
+        <source>Tagi</source>
+        <target>Tagi</target>
+      </trans-unit>
+
+      <trans-unit id="messages.no_tag">
+        <source>-- wybierz tag --</source>
+        <target>-- wybierz tag --</target>
+      </trans-unit>
+      <trans-unit id="messages.shortcut">
+        <source>Skrót</source>
+        <target>Skrót</target>
+      </trans-unit>
+
+      <trans-unit id="messages.tag">
+        <source>Tag</source>
+        <target>Tag</target>
+      </trans-unit>
+      <trans-unit id="form.url_filter.tag.placeholder">
+        <source>form.url_filter.tag.placeholder</source>
+        <target>-- wybierz dowolny --</target>
+      </trans-unit>
+      <trans-unit id="messages.edit_tag">
+        <source>Edycja tagu</source>
+        <target>Edycja tagu</target>
+      </trans-unit>
+
+      <trans-unit id="form.tag.name.label">
+        <source>form.tag.name.label</source>
+        <target>Nazwa tagu</target>
+      </trans-unit>
+      <trans-unit id="messages.original_url">
+        <source>Oryginalny URL</source>
+        <target>Oryginalny URL</target>
+      </trans-unit>
+
+      <trans-unit id="messages.email_label">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="messages.current_password">
+        <source>Obecne hasło</source>
+        <target>Obecne hasło</target>
+      </trans-unit>
+
+      <trans-unit id="messages.nickname">
+        <source>Pseudonim</source>
+        <target>Pseudonim</target>
+      </trans-unit>
+
+      <trans-unit id="messages.new_password">
+        <source>Nowe hasło</source>
+        <target>Nowe hasło</target>
+      </trans-unit>
+      <trans-unit id="admin.profile_data.title">
+        <source>admin.profile_data.title</source>
+        <target>Edytuj dane profilu</target>
+      </trans-unit>
+
+      <trans-unit id="admin.profile_data.submit">
+        <source>admin.profile_data.submit</source>
+        <target>Zapisz profil</target>
+      </trans-unit>
+
+      <trans-unit id="admin.change_password.title">
+        <source>admin.change_password.title</source>
+        <target>Zmień hasło</target>
+      </trans-unit>
+
+      <trans-unit id="admin.change_password.submit">
+        <source>admin.change_password.submit</source>
+        <target>Zaktualizuj hasło</target>
+      </trans-unit>
+
+      <trans-unit id="url.clicks.positive_or_zero">
+        <source>url.clicks.positive_or_zero</source>
+        <target>Liczba kliknięć musi być równa zero lub większa.</target>
+      </trans-unit>
+
+      <trans-unit id="url.originalUrl.invalid">
+        <source>url.originalUrl.invalid</source>
+        <target>Niepoprawny format URL</target>
+      </trans-unit>
+
+      <trans-unit id="tag.slug.not_blank" resname="tag.slug.not_blank">
+          <source>tag.slug.not_blank</source>
+          <target>Slug tagu nie może być pusty</target>
       </trans-unit>
 
     </body>

@@ -11,6 +11,7 @@ use App\Repository\AdminRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reprezentuje administratora systemu.
@@ -21,8 +22,6 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * ID.
-     *
-     * @var int|null int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -31,26 +30,23 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Email.
-     *
-     * @var string|null string|null
      */
-    #[ORM\Column(length: 180)]
+    #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank(message: 'admin.email.not_blank')]
+    #[Assert\Email(message: 'admin.email.invalid')]
     private ?string $email = null;
 
     /**
      * Role użytkownika.
-     *
-     * @var array array
      */
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
     /**
      * Zaszyfrowane hasło użytkownika.
-     *
-     * @var string|null string|null
      */
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'admin.password.not_blank')]
     private ?string $password = null;
 
     /**
@@ -113,7 +109,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Ustawia role użytkownika.
      *
-     * @param string[] $roles roles string
+     * @param array $roles array
      *
      * @return void void
      */
@@ -135,9 +131,9 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Ustawia zaszyfrowane hasło.
      *
-     * @param string $password string $password
+     * @param string $password string
      *
-     * @return $this $this
+     * @return $this this
      */
     public function setPassword(string $password): static
     {
@@ -145,12 +141,19 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
     /**
      * Nickname (pseudonim) administratora.
      *
      * @var string|null string|null
      */
     #[ORM\Column(length: 50, nullable: true)]
+    #[Assert\Length(
+        min: 3,
+        max: 50,
+        minMessage: 'admin.nickname.min_length',
+        maxMessage: 'admin.nickname.max_length'
+    )]
     private ?string $nickname = null;
 
     /**
@@ -166,9 +169,9 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Ustawia pseudonim administratora.
      *
-     * @param string|null $nickname string|null $nickname
+     * @param string|null $nickname string|null
      *
-     * @return static
+     * @return $this this
      */
     public function setNickname(?string $nickname): static
     {
@@ -176,6 +179,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
     /**
      * Usuwa dane tymczasowe (zgodnie z interfejsem UserInterface).
      *

@@ -9,7 +9,7 @@ echo Running php-cbf... >> "%RESULT_FILE%" 2>&1
 php vendor\bin\phpcbf --standard=Symfony src\ --ignore=Kernel.php >> "%RESULT_FILE%" 2>&1
 
 echo Running php-cs-fixer... >> "%RESULT_FILE%" 2>&1
-php vendor\bin\php-cs-fixer fix src\ --rules=@Symfony,@PSR1,@PSR2,@PSR12 --dry-run -vvv >> "%RESULT_FILE%" 2>&1
+php vendor\bin\php-cs-fixer fix src\ --rules=@Symfony,@PSR1,@PSR2,@PSR12  --dry-run -vvv >> "%RESULT_FILE%" 2>&1
 
 echo Running phpcs... >> "%RESULT_FILE%" 2>&1
 php vendor\bin\phpcs --standard=Symfony src\ --ignore=Kernel.php >> "%RESULT_FILE%" 2>&1
